@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:university_app/screens/homepage.dart';
 import 'package:university_app/screens/login.dart';
 // import 'package:university_app/screens/profile.dart';
-import 'package:university_app/screens/homepage.dart';
+// import 'package:university_app/screens/homepage.dart';
 
 class editprofile extends StatefulWidget{
   @override
@@ -229,7 +229,7 @@ class _editprofileState extends State<editprofile> {
             ),
             child:const Text('Save'),
             onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Homepage(),),);
+              // Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => profile(),),);
               //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                  ScaffoldMessenger.of(context).showSnackBar( SnackBar
                  (content:const  Text('Saved Changes'),

@@ -151,7 +151,7 @@ class _profileState extends State<profile> {
             ),
             child:const Text('Edit Profile'),
             onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>editprofile(),),);
+              Navigator.push(context, MaterialPageRoute(builder:(context) =>editprofile(),),);
               //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
               //    ScaffoldMessenger.of(context).showSnackBar( SnackBar
               //    (content:const  Text('Login Successful!'),
