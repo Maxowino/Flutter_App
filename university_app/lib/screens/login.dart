@@ -105,24 +105,7 @@ class _LoginState extends State<Login> {
 
             )
           ),
-
-      // Padding( 
-      //   padding:const EdgeInsets.fromLTRB(0,25,0,15),
-      //     child: ElevatedButton( 
-      //       style: ElevatedButton.styleFrom(
-      //         minimumSize:const Size(180,50),
-      //         backgroundColor: Colors.black,
-      //         foregroundColor: Colors.white,
-      //         shape: const StadiumBorder(),
-      //         side: BorderSide.none
-      //       ),
-      //       child:const Text('Login'),
-      //       onPressed: (){
-      //         Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const Homepage(),));
-      //       },
-
-      //       )),
-      //      
+   
       Padding( 
         padding:const EdgeInsets.fromLTRB(0,15,0,15),
         child:RichText(
@@ -142,21 +125,6 @@ class _LoginState extends State<Login> {
                 ),
             ]
           ))
-          // child: ElevatedButton( 
-          //   style: ElevatedButton.styleFrom(
-          //     minimumSize:const Size(180,50),
-          //     backgroundColor: Colors.black,
-          //     foregroundColor: Colors.white,
-          //     shape: const StadiumBorder(),
-          //     side: BorderSide.none
-          //   ),
-          //   child:const Text('Register'),
-          //   onPressed: (){
-          //     Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => HomeScreen(),));
-          //   },
-
-          //   ))
-          //  ]
            ), 
            
        
@@ -166,15 +134,3 @@ class _LoginState extends State<Login> {
      ));
   }
 }
-   //  suffixIcon:IconButton(
-              //   icon:
-              //    Icon(Icons.remove_red_eye ,
-              //    isobscure ? Icons.visibility:Icons.visibility_off),
-
-              //     onPressed:(){
-              //     setState(){
-              //       obscureText:isobscure
-
-              //     }
-              //    },
-              //    ),

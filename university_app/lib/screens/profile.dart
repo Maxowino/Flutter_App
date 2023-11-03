@@ -22,7 +22,7 @@ class _profileState extends State<profile> {
         icon:const Icon(Icons.menu, color:Colors.white),
         color:Colors.black,
         itemBuilder:(context)=>[
-            PopupMenuItem(
+            PopupMenuItem( 
               child: Row(
                 children: [
                   const Icon(Icons.settings,color:Colors.white),

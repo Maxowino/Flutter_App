@@ -42,9 +42,9 @@ class _HomepageState extends State<Homepage> {
       showUnselectedLabels: true,
 
     currentIndex: _currentindex,
-     onTap: (int index){
+     onTap: (int newindex){
       setState((){
-      _currentindex=index;}
+      _currentindex=newindex;}
       );
 
     },
@@ -82,3 +82,4 @@ class _HomepageState extends State<Homepage> {
  ));
 }
 }
+
