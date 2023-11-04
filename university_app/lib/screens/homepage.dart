@@ -16,7 +16,7 @@ class _HomepageState extends State<Homepage> {
   
   int _currentindex=0;
   
-  List<Widget> widgetlist=[
+  List<Widget> pagelist=[
     Homee(),
     Course(),
     grades(),
@@ -32,7 +32,7 @@ class _HomepageState extends State<Homepage> {
 
     backgroundColor: Colors.grey,
     body:IndexedStack(
-      children: widgetlist,
+      children: pagelist,
       index: _currentindex,
     ),
      bottomNavigationBar:BottomNavigationBar(

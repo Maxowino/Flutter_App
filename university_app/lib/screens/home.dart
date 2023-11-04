@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/login.dart';
 import 'package:university_app/screens/editprofile.dart';
+import 'package:university_app/screens/feedback.dart';
 class Homee extends StatelessWidget{
  @override
   Widget build(BuildContext context) {
@@ -9,56 +10,56 @@ class Homee extends StatelessWidget{
     appBar:AppBar(
       title:const Text("Homepage"),backgroundColor: Colors.black, 
       centerTitle: true,
-           actions:<Widget>[
-     PopupMenuButton(
-        icon:const Icon(Icons.menu, color:Colors.white),
-        color:Colors.black,
-        itemBuilder:(context)=>[
-            PopupMenuItem(
-              child: Row(
-                children: [
-                  const Icon(Icons.settings,color:Colors.white),
-                   Container(
-                    margin:const EdgeInsets.only(left:10),
-                    child:const Text('Settings',
-                     style: TextStyle(
-                 color: Colors.white,))),
-                ],
-                )
-                ),
-            PopupMenuItem(
-              child: Row(
-                children: [
-                  const Icon(Icons.notifications,color:Colors.white),
-                   Container(
-                    margin:const EdgeInsets.only(left:10),
-                    child:const Text('Notifications',
-                     style: TextStyle(
-                    color: Colors.white,)))
-                ],
-                )
-                ),
-                  PopupMenuItem(
-              child: Row(
-                children: [
-                   const Icon(Icons.logout, color:Colors.white),
-                   Container(
-                    margin:const EdgeInsets.only(left:10),
-                    child:const Text('Logout',
-                       style: TextStyle(
-                    color: Colors.white,)))
-                ],
-                ),
-                onTap:(){
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
-                }
-                )
+    //        actions:<Widget>[
+    //  PopupMenuButton(
+    //     icon:const Icon(Icons.menu, color:Colors.white),
+    //     color:Colors.black,
+    //     itemBuilder:(context)=>[
+    //         PopupMenuItem(
+    //           child: Row(
+    //             children: [
+    //               const Icon(Icons.settings,color:Colors.white),
+    //                Container(
+    //                 margin:const EdgeInsets.only(left:10),
+    //                 child:const Text('Settings',
+    //                  style: TextStyle(
+    //              color: Colors.white,))),
+    //             ],
+    //             )
+    //             ),
+    //         PopupMenuItem(
+    //           child: Row(
+    //             children: [
+    //               const Icon(Icons.notifications,color:Colors.white),
+    //                Container(
+    //                 margin:const EdgeInsets.only(left:10),
+    //                 child:const Text('Notifications',
+    //                  style: TextStyle(
+    //                 color: Colors.white,)))
+    //             ],
+    //             )
+    //             ),
+    //               PopupMenuItem(
+    //           child: Row(
+    //             children: [
+    //                const Icon(Icons.logout, color:Colors.white),
+    //                Container(
+    //                 margin:const EdgeInsets.only(left:10),
+    //                 child:const Text('Logout',
+    //                    style: TextStyle(
+    //                 color: Colors.white,)))
+    //             ],
+    //             ),
+    //             onTap:(){
+    //                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
+    //             }
+    //             )
 
 
-        ]
-       )
+    //     ]
+    //    )
      
-        ],  
+    //     ],  
     
       
     ),
@@ -69,7 +70,7 @@ class Homee extends StatelessWidget{
       children:  <Widget>[ 
         DrawerHeader(
        
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.black, 
             
           ),
@@ -97,7 +98,7 @@ class Homee extends StatelessWidget{
                     
                   ),
                 ),
-                Text(
+                const Text(
                   'Me',
                   style: TextStyle(
                     color: Colors.white,
@@ -108,11 +109,7 @@ class Homee extends StatelessWidget{
             ),
           ),
         ),
-        const ListTile(
-          leading: Icon(Icons.message),
-          title: Text('Messages'),
-        ),
-        ListTile(
+         ListTile(
           leading: Icon(Icons.account_circle),
           title: Text('Profile'),
           onTap:(){
@@ -120,8 +117,20 @@ class Homee extends StatelessWidget{
           }
         ),
         const ListTile(
+          leading: Icon(Icons.notifications),
+          title: Text('Notification'),
+        ),
+       
+        const ListTile(
           leading: Icon(Icons.settings),
           title: Text('Settings'),
+        ),
+          ListTile(
+          leading: Icon(Icons.message),
+          title: Text('Feedback'),
+          onTap:(){
+            Navigator.push(context, MaterialPageRoute(builder:(context) => feedback(),));
+          }
         ),
         ListTile(
           leading: Icon(Icons.logout),
@@ -154,6 +163,26 @@ class Homee extends StatelessWidget{
 
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //  drawer: Drawer(
 //     child: ListView(
