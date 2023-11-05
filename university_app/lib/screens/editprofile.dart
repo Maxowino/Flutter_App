@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:university_app/screens/register.dart';
 // import 'package:university_app/screens/homepage.dart';
-import 'package:university_app/screens/login.dart';
+import 'package:university_app/screens/schoollogin.dart';
 // import 'package:university_app/screens/profile.dart';
 // import 'package:university_app/screens/homepage.dart';
 

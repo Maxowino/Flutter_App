@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:university_app/screens/login.dart';
+import 'package:university_app/screens/schoollogin.dart';
 class grades extends StatelessWidget{
  @override
   Widget build(BuildContext context) {

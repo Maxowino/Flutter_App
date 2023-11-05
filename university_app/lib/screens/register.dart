@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:university_app/screens/login.dart';
+import 'package:university_app/screens/schoollogin.dart';
 
 class HomeScreen extends StatefulWidget{
   @override

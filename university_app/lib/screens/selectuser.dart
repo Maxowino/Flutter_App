@@ -1,7 +1,6 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:university_app/screens/login.dart';
+import 'package:university_app/screens/schoollogin.dart';
 import 'package:university_app/screens/studentlogin.dart';
 
 class selectUser extends StatefulWidget{

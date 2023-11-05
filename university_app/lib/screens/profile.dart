@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:university_app/screens/register.dart';
 import 'package:university_app/screens/editprofile.dart';
-import 'package:university_app/screens/login.dart';
+import 'package:university_app/screens/schoollogin.dart';
 
 class profile extends StatefulWidget{
   @override
