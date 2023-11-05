@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:university_app/screens/register.dart';
 import 'package:university_app/screens/homepage.dart';
 
-class Login extends StatefulWidget{
+class studentlogin extends StatefulWidget{
   
   @override
-  State<Login> createState() => _LoginState();
+  State<studentlogin> createState() => _studentloginState();
 }
 
-class _LoginState extends State<Login> {
+class _studentloginState extends State<studentlogin> {
     bool showpassword=true;
 
     bool checkedbox=false;

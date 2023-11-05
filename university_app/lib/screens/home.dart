@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:university_app/screens/login.dart';
+// import 'package:university_app/screens/login.dart';
 import 'package:university_app/screens/editprofile.dart';
 import 'package:university_app/screens/feedback.dart';
+import 'package:university_app/screens/selectuser.dart';
 class Homee extends StatelessWidget{
  @override
   Widget build(BuildContext context) {
@@ -136,7 +137,7 @@ class Homee extends StatelessWidget{
           leading: Icon(Icons.logout),
           title: Text('Log Out'),
           onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>selectUser()));
           },
         ),
       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:university_app/screens/login.dart';
+// import 'package:university_app/screens/login.dart';
+import 'package:university_app/screens/selectuser.dart';
 
 class splashscreen extends StatefulWidget{
 const splashscreen({super.key});
@@ -15,7 +16,7 @@ void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(Duration(seconds:4),() {
-       Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
+       Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => selectUser(),));
     });
   }
   @override
