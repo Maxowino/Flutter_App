@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'package:university_app/screens/register.dart';
 import 'package:university_app/screens/editprofile.dart';
-import 'package:university_app/screens/schoollogin.dart';
+// import 'package:university_app/screens/schoollogin.dart';
+import 'package:university_app/screens/selectuser.dart';
 
 class profile extends StatefulWidget{
   @override
@@ -58,7 +59,7 @@ class _profileState extends State<profile> {
                 ],
                 ),
                 onTap:(){
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => selectUser (),));
                 }
                 )
 

@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/register.dart';
-import 'package:university_app/screens/homepage.dart';
+import 'package:university_app/screens/schoolhomepage.dart';
 
 class Login extends StatefulWidget{
   
@@ -14,6 +14,8 @@ class _LoginState extends State<Login> {
 
     bool checkedbox=false;
   final logindetails=GlobalKey<FormState>();
+  final user=TextEditingController();
+  final pass=TextEditingController();
   //  var snackbar= const SnackBar(content: Text('Login In Successful'),
   //     backgroundColor: Colors.red,
   //     padding: EdgeInsets.fromLTRB(0, 0, 0, 2),);
@@ -30,6 +32,7 @@ class _LoginState extends State<Login> {
         padding:const EdgeInsets.fromLTRB(0,0, 0, 0),
         
           child:  Form(
+            key:logindetails,
             child: Column(  
               //  crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +48,7 @@ class _LoginState extends State<Login> {
             Padding( 
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
-              //  controller: user,
+               controller: user,
               decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.person),
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
@@ -59,7 +62,7 @@ class _LoginState extends State<Login> {
                    SizedBox(
                 child:TextFormField(
                   obscureText:showpassword,
-                  
+                  controller: pass,
                   decoration: InputDecoration(
                   suffixIcon: 
                 IconButton(
@@ -92,7 +95,7 @@ class _LoginState extends State<Login> {
               ),
               child:const Text('Login'),
               onPressed: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const Homepage(),),);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolHomepage(),),);
                 //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const  Text('Login Successful!'),

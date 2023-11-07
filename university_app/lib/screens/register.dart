@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+// import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/schoollogin.dart';
 
 class HomeScreen extends StatefulWidget{
@@ -9,15 +10,16 @@ class HomeScreen extends StatefulWidget{
 
 class _HomeScreenState extends State<HomeScreen> {
   bool showpassword=true;
+ // List<user> users=[];
   final formkey= GlobalKey<FormState>();
-  final email= TextEditingController();
-  final phonecontroller=TextEditingController();
-  final pass=TextEditingController();
-  final user=TextEditingController();
-
+  final TextEditingController email= TextEditingController();
+  final TextEditingController phonecontroller=TextEditingController();
+  final TextEditingController pass=TextEditingController();
+  final TextEditingController user=TextEditingController();
 
  
-
+ 
+   
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -45,8 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const Text('Register', style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
               Padding( 
                padding:EdgeInsets.fromLTRB(0,15,0,15),
-                child:TextFormField(
-                  controller: email,
+              child:TextFormField(
+               controller: email,
                keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(10,0, 10,0),

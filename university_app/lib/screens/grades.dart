@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:university_app/screens/schoollogin.dart';
+import 'package:university_app/screens/selectuser.dart';
 class grades extends StatelessWidget{
  @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class grades extends StatelessWidget{
                 ],
                 ),
                 onTap:(){
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => selectUser(),));
                 }
                 )
 

@@ -7,14 +7,14 @@ import 'package:university_app/screens/schoolhome.dart';
 import 'package:university_app/screens/schoolrequests.dart';
 
 
-class Homepage extends StatefulWidget{
-  const Homepage({super.key});
+class schoolHomepage extends StatefulWidget{
+  const schoolHomepage({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<schoolHomepage> createState() => _schoolHomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _schoolHomepageState extends State<schoolHomepage> {
   
   int _currentindex=0;
   

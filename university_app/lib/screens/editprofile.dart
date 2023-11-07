@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:university_app/models/user.dart';
 // import 'package:university_app/screens/register.dart';
 // import 'package:university_app/screens/homepage.dart';
 import 'package:university_app/screens/schoollogin.dart';
@@ -11,7 +12,11 @@ class editprofile extends StatefulWidget{
 }
 
 class _editprofileState extends State<editprofile> {
-  
+
+  List<user> users=[];
+
+   TextEditingController phone=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -158,8 +163,9 @@ class _editprofileState extends State<editprofile> {
     
           ),
           SizedBox(height: 35,),
-            const TextField(
-            decoration: InputDecoration(
+             TextField(
+             controller: phone,
+            decoration: InputDecoration( 
               contentPadding: EdgeInsets.only(bottom: 3),
               labelText:"Phone Number",
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -167,7 +173,13 @@ class _editprofileState extends State<editprofile> {
               hintStyle: TextStyle(
                 fontSize: 16,fontWeight: FontWeight.bold, color: Colors.black
               ),
-             suffixIcon: Icon(Icons.edit,color: Colors.black,),
+             suffixIcon: IconButton(
+              onPressed: (){
+          
+
+              },
+              
+              icon:Icon(Icons.edit,color: Colors.black,)),
             ),
     
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/profile.dart';
 import 'package:university_app/screens/grades.dart';
 import 'package:university_app/screens/home.dart';
@@ -23,6 +24,7 @@ class _HomepageState extends State<Homepage> {
     profile(),
 
   ];
+  List<user> users=[];
   @override
   Widget build(BuildContext context) {
    return  Scaffold(
@@ -80,6 +82,10 @@ class _HomepageState extends State<Homepage> {
    
 
  ));
+}
+void addDialog(BuildContext context){
+  
+
 }
 }
 

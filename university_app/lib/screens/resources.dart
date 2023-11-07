@@ -15,57 +15,6 @@ Widget build(BuildContext context){
     appBar:AppBar(
       title:const Text("Resources"),backgroundColor: Colors.black, 
       centerTitle: true,
-    //        actions:<Widget>[
-    //  PopupMenuButton(
-    //     icon:const Icon(Icons.menu, color:Colors.white),
-    //     color:Colors.black,
-    //     itemBuilder:(context)=>[
-    //         PopupMenuItem(
-    //           child: Row(
-    //             children: [
-    //               const Icon(Icons.settings,color:Colors.white),
-    //                Container(
-    //                 margin:const EdgeInsets.only(left:10),
-    //                 child:const Text('Settings',
-    //                  style: TextStyle(
-    //              color: Colors.white,))),
-    //             ],
-    //             )
-    //             ),
-    //         PopupMenuItem(
-    //           child: Row(
-    //             children: [
-    //               const Icon(Icons.notifications,color:Colors.white),
-    //                Container(
-    //                 margin:const EdgeInsets.only(left:10),
-    //                 child:const Text('Notifications',
-    //                  style: TextStyle(
-    //                 color: Colors.white,)))
-    //             ],
-    //             )
-    //             ),
-    //               PopupMenuItem(
-    //           child: Row(
-    //             children: [
-    //                const Icon(Icons.logout, color:Colors.white),
-    //                Container(
-    //                 margin:const EdgeInsets.only(left:10),
-    //                 child:const Text('Logout',
-    //                    style: TextStyle(
-    //                 color: Colors.white,)))
-    //             ],
-    //             ),
-    //             onTap:(){
-    //                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
-    //             }
-    //             )
-
-
-    //     ]
-    //    )
-     
-    //     ],  
-    
       
     ),
     drawer: Drawer(
@@ -163,5 +112,70 @@ Widget build(BuildContext context){
 
 
 }
+// void  addrequests(BuildContext context)
+// {
+//   TextEditingController nameController= new TextEditingController();
+//   TextEditingController emailController= new TextEditingController();
+//   TextEditingController passController= new TextEditingController();
+//   TextEditingController phoneController= new TextEditingController();
+//   showDialog(context: context, builder: (context){
+//   return AlertDialog();});
+
+
+  
+// }
 
 }
+
+
+  //        actions:<Widget>[
+    //  PopupMenuButton(
+    //     icon:const Icon(Icons.menu, color:Colors.white),
+    //     color:Colors.black,
+    //     itemBuilder:(context)=>[
+    //         PopupMenuItem(
+    //           child: Row(
+    //             children: [
+    //               const Icon(Icons.settings,color:Colors.white),
+    //                Container(
+    //                 margin:const EdgeInsets.only(left:10),
+    //                 child:const Text('Settings',
+    //                  style: TextStyle(
+    //              color: Colors.white,))),
+    //             ],
+    //             )
+    //             ),
+    //         PopupMenuItem(
+    //           child: Row(
+    //             children: [
+    //               const Icon(Icons.notifications,color:Colors.white),
+    //                Container(
+    //                 margin:const EdgeInsets.only(left:10),
+    //                 child:const Text('Notifications',
+    //                  style: TextStyle(
+    //                 color: Colors.white,)))
+    //             ],
+    //             )
+    //             ),
+    //               PopupMenuItem(
+    //           child: Row(
+    //             children: [
+    //                const Icon(Icons.logout, color:Colors.white),
+    //                Container(
+    //                 margin:const EdgeInsets.only(left:10),
+    //                 child:const Text('Logout',
+    //                    style: TextStyle(
+    //                 color: Colors.white,)))
+    //             ],
+    //             ),
+    //             onTap:(){
+    //                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Login(),));
+    //             }
+    //             )
+
+
+    //     ]
+    //    )
+     
+    //     ],  
+    

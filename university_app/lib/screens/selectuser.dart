@@ -33,67 +33,69 @@ class _selectUserState extends  State<selectUser> with SingleTickerProviderState
         ),
 
         vsync:this,
-        child:  Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: Text('Select User',style: TextStyle(fontSize: 34,color: Colors.black,fontWeight: FontWeight.bold),),
-              ),
-              Container(
-
-                height:200,
-                child: Card(
-                  margin: EdgeInsets.all(50),
-                  elevation:20,
-                  color: Colors.white,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize:MainAxisSize.min ,
-                      children: [
-                        SizedBox(height: 8,),
-                        Text('SCHOOL',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-                        TextButton(
-                        child: Text('Continue as the head of a school',style: TextStyle(color: Colors.black),),
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
-              
-                        }, ),
-                      ],
-                      
-                  
+        child:  SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child: Text('Select User',style: TextStyle(fontSize: 34,color: Colors.black,fontWeight: FontWeight.bold),),
+                ),
+                Container(
+        
+                  height:200,
+                  child: Card(
+                    margin: EdgeInsets.all(50),
+                    elevation:20,
+                    color: Colors.white,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize:MainAxisSize.min ,
+                        children: [
+                          SizedBox(height: 8,),
+                          Text('SCHOOL',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+                          TextButton(
+                          child: Text('Continue as the head of a school',style: TextStyle(color: Colors.black),),
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+                
+                          }, ),
+                        ],
+                        
+                    
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Text('OR',style:TextStyle(fontSize: 32, color: Colors.black, fontWeight: FontWeight.bold)),
-               Container(
-
-                height:200,
-                child: Card(
-                  margin: EdgeInsets.all(50),
-                  elevation:20,
-                  color: Colors.black,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize:MainAxisSize.min ,
-                      children: [
-                        SizedBox(height: 8,),
-                        Text('STUDENT',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-                        TextButton(
-                        child: Text('Continue as a Student',style: TextStyle(color: Colors.white),),
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>studentlogin()));
-              
-                        }, ),
-                      ],
-                      
-                  
+                Text('OR',style:TextStyle(fontSize: 32, color: Colors.black, fontWeight: FontWeight.bold)),
+                 Container(
+        
+                  height:200,
+                  child: Card(
+                    margin: EdgeInsets.all(50),
+                    elevation:20,
+                    color: Colors.black,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize:MainAxisSize.min ,
+                        children: [
+                          SizedBox(height: 8,),
+                          Text('STUDENT',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                          TextButton(
+                          child: Text('Continue as a Student',style: TextStyle(color: Colors.white),),
+                          onPressed: (){
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>studentlogin()));
+                
+                          }, ),
+                        ],
+                        
+                    
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ) 
