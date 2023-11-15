@@ -22,8 +22,8 @@ return Scaffold(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
+          const Padding(
+            padding: EdgeInsets.all(10.0),
             child: Text('Your Feedback will help us improve your experience with us ',
             style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
           ),
@@ -33,7 +33,7 @@ return Scaffold(
               minLines: 2,
               maxLines: 6,
               keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Enter your Suggestion and feedback',
                 border:OutlineInputBorder( borderRadius:BorderRadius.all(Radius.circular(10)),)
               ),
@@ -53,7 +53,6 @@ return Scaffold(
             onPressed: (){
             
              Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const Homepage(),),);
-              //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                  ScaffoldMessenger.of(context).showSnackBar( SnackBar
                  (content:const  Text('Thank you for your Feedback!'),
                  backgroundColor: Colors.black,

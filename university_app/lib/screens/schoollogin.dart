@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:university_app/screens/register.dart';
 import 'package:university_app/screens/schoolhomepage.dart';
+import 'package:university_app/screens/schoolregister.dart';
 
 class Login extends StatefulWidget{
   
@@ -14,8 +14,8 @@ class _LoginState extends State<Login> {
 
     bool checkedbox=false;
   final logindetails=GlobalKey<FormState>();
-  final user=TextEditingController();
-  final pass=TextEditingController();
+  final TextEditingController user=TextEditingController();
+  final TextEditingController pass=TextEditingController();
   //  var snackbar= const SnackBar(content: Text('Login In Successful'),
   //     backgroundColor: Colors.red,
   //     padding: EdgeInsets.fromLTRB(0, 0, 0, 2),);
@@ -144,7 +144,7 @@ class _LoginState extends State<Login> {
                     text: "Register Now",
                     style: const TextStyle(color: Colors.white,fontSize: 14),
                     recognizer: TapGestureRecognizer()..onTap=(){
-                     Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => HomeScreen(),));
+                     Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolregister(),));
           
                     }
                   ),

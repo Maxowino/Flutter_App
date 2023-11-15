@@ -68,7 +68,12 @@ class grades extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.center,
 
               children: [
-                Text ('My Grades', style: TextStyle(fontSize:50,fontWeight: FontWeight.bold ),)
+                Text ('My Grades', style: TextStyle(fontSize:50,fontWeight: FontWeight.bold ),),
+                SizedBox(height: 15,),
+                Text('Apply to study abroad. Please submit all the required documents and fill in all the required details.'),
+                SizedBox(height: 25,),
+                
+                 
               ],
 
             ),
