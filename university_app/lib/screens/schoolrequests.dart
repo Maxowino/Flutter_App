@@ -36,39 +36,37 @@ class _schoolrequestState extends State<schoolrequests> {
             color: Colors.black, 
             
           ),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                
-               Container(
-                  width: 100,
-                  height:100,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 4,
-                      color: Theme.of(context).scaffoldBackgroundColor),
-                      boxShadow:const [
-                        BoxShadow(
-                          spreadRadius: 2,blurRadius: 10,
-                          color: Colors.black,
-                          offset: Offset(0,10),
-                        )
-                      ],
-                    shape:BoxShape.circle,
-                    
-                  ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              
+             Container(
+                width: 100,
+                height:100,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 4,
+                    color: Theme.of(context).scaffoldBackgroundColor),
+                    boxShadow:const [
+                      BoxShadow(
+                        spreadRadius: 2,blurRadius: 10,
+                        color: Colors.black,
+                        offset: Offset(0,10),
+                      )
+                    ],
+                  shape:BoxShape.circle,
+                  
                 ),
-                const Text(
-                  'Me',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
+              ),
+              const Text(
+                'Me',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
        
@@ -82,15 +80,15 @@ class _schoolrequestState extends State<schoolrequests> {
           title: Text('Settings'),
         ),
           ListTile(
-          leading: Icon(Icons.message),
-          title: Text('Feedback'),
+          leading: const Icon(Icons.message),
+          title: const Text('Feedback'),
           onTap:(){
             Navigator.push(context, MaterialPageRoute(builder:(context) => feedback(),));
           }
         ),
         ListTile(
-          leading: Icon(Icons.logout),
-          title: Text('Log Out'),
+          leading: const Icon(Icons.logout),
+          title: const Text('Log Out'),
           onTap: (){
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>selectUser()));
           },
