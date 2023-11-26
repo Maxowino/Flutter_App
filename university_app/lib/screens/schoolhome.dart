@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:university_app/screens/editprofile.dart';
 import 'package:university_app/screens/feedback.dart';
 import 'package:university_app/screens/selectuser.dart';
+import 'package:university_app/screens/settings.dart';
 class schoolHome extends StatefulWidget{
   @override
   State<schoolHome> createState() => _schoolHomeState();
@@ -121,9 +122,12 @@ class _schoolHomeState extends State<schoolHome> {
           title: Text('Notification'),
         ),
        
-        const ListTile(
+         ListTile(
           leading: Icon(Icons.settings),
           title: Text('Settings'),
+            onTap:(){
+            Navigator.push(context, MaterialPageRoute(builder:(context) => settings(),));
+          }
         ),
           ListTile(
           leading: Icon(Icons.message),

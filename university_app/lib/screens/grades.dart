@@ -72,8 +72,13 @@ class grades extends StatelessWidget{
                 SizedBox(height: 15,),
                 Text('Apply to study abroad. Please submit all the required documents and fill in all the required details.'),
                 SizedBox(height: 25,),
+                Form(
+                  child: Column(
+                    children: [
+                      
+                        
                 
-                 
+                    ]),),
               ],
 
             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:university_app/screens/editprofile.dart';
 import 'package:university_app/screens/feedback.dart';
 import 'package:university_app/screens/selectuser.dart';
+import 'package:university_app/screens/settings.dart';
 class Homee extends StatelessWidget{
  @override
   Widget build(BuildContext context) {
@@ -122,9 +123,12 @@ class Homee extends StatelessWidget{
           title: Text('Notification'),
         ),
        
-        const ListTile(
+        ListTile(
           leading: Icon(Icons.settings),
           title: Text('Settings'),
+            onTap:(){
+            Navigator.push(context, MaterialPageRoute(builder:(context) => settings(),));
+          }
         ),
           ListTile(
           leading: Icon(Icons.message),
