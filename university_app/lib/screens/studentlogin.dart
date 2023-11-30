@@ -13,11 +13,10 @@ class _studentloginState extends State<studentlogin> {
     bool showpassword=true;
 
     bool checkedbox=false;
-  final logindetails=GlobalKey<FormState>();
-  //  var snackbar= const SnackBar(content: Text('Login In Successful'),
-  //     backgroundColor: Colors.red,
-  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 2),);
-  // bool _isobscure=true;
+  final slogindetails=GlobalKey<FormState>();
+  final TextEditingController user = TextEditingController();
+  final TextEditingController pass= TextEditingController();
+ 
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -30,6 +29,7 @@ class _studentloginState extends State<studentlogin> {
         padding:const EdgeInsets.fromLTRB(0,0, 0, 0),
         
           child:  Form(
+            key: slogindetails,
             child: Column(  
               //  crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +45,13 @@ class _studentloginState extends State<studentlogin> {
             Padding( 
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
-              //  controller: user,
+               controller: user,
+                validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  your username';
+                  }
+                return null;
+                  },
               decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.person),
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
@@ -59,7 +65,13 @@ class _studentloginState extends State<studentlogin> {
                    SizedBox(
                 child:TextFormField(
                   obscureText:showpassword,
-                  
+                  controller:pass,
+                   validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter your password';
+                  }
+                return null;
+                  },
                   decoration: InputDecoration(
                   suffixIcon: 
                 IconButton(
@@ -92,6 +104,7 @@ class _studentloginState extends State<studentlogin> {
               ),
               child:const Text('Login'),
               onPressed: (){
+                   if (slogindetails.currentState!.validate()){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const Homepage(),),);
                 //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
@@ -107,7 +120,8 @@ class _studentloginState extends State<studentlogin> {
                    ),
                    
                   ));
-              },
+              }
+              }
           
               )
             ),

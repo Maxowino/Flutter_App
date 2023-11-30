@@ -13,13 +13,16 @@ class _settingsState extends State<settings> {
 return Scaffold(
    
    appBar: AppBar(
-    title: Text('Settings',style: TextStyle(fontWeight: FontWeight.w500),),backgroundColor: Colors.black,
+    title: const Text('Settings',style: TextStyle(fontWeight: FontWeight.w500),),backgroundColor: Colors.black,
     centerTitle: true,
 
    ),
-   drawer: Drawer(
-    
-   ),
+
+    body:const Center(
+      child: Column(
+         
+      ),
+    ) 
 
 );
 }

@@ -13,13 +13,9 @@ class _LoginState extends State<Login> {
     bool showpassword=true;
 
     bool checkedbox=false;
-  final logindetails=GlobalKey<FormState>();
+ final GlobalKey<FormState> logindetails=GlobalKey<FormState>();
   final TextEditingController user=TextEditingController();
   final TextEditingController pass=TextEditingController();
-  //  var snackbar= const SnackBar(content: Text('Login In Successful'),
-  //     backgroundColor: Colors.red,
-  //     padding: EdgeInsets.fromLTRB(0, 0, 0, 2),);
-  // bool _isobscure=true;
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -49,6 +45,12 @@ class _LoginState extends State<Login> {
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
                controller: user,
+                validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter username';
+                  }
+                return null;
+                  },
               decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.person),
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
@@ -63,6 +65,12 @@ class _LoginState extends State<Login> {
                 child:TextFormField(
                   obscureText:showpassword,
                   controller: pass,
+                   validator: (value) {
+                   if (value == null || value.isEmpty) {
+                  return 'Please enter password';
+                  }
+                     return null;
+                      },
                   decoration: InputDecoration(
                   suffixIcon: 
                 IconButton(
@@ -95,7 +103,8 @@ class _LoginState extends State<Login> {
               ),
               child:const Text('Login'),
               onPressed: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolHomepage(),),);
+                if (logindetails.currentState!.validate()) {
+             Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolHomepage(),),);
                 //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const  Text('Login Successful!'),
@@ -110,8 +119,8 @@ class _LoginState extends State<Login> {
                    ),
                    
                   ));
-              },
-          
+              }
+              }
               )
             ),
             SizedBox(height: 20,),
