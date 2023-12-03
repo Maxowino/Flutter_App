@@ -215,7 +215,7 @@ class _editprofileState extends State<editprofile> {
             const TextField(
             decoration: InputDecoration(
               contentPadding: EdgeInsets.only(bottom: 3),
-              labelText:"Usernanme",
+              labelText:"Username",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintText: "Username",
               hintStyle: TextStyle(

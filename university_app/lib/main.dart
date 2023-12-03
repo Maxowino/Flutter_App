@@ -6,11 +6,11 @@ import 'package:university_app/screens/splashcreen.dart';
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
  
   @override

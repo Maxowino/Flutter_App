@@ -49,6 +49,13 @@ class _schoolregisterState extends State<schoolregister> {
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
               child:TextFormField(
                controller: email,
+               validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  your email';
+                  }
+                return null;
+                  },
+             
                keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
@@ -56,24 +63,31 @@ class _schoolregisterState extends State<schoolregister> {
                 labelText: 'Enter Email',
               
               ),
-               validator: (value) {
-                 bool emailvalidate= RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!);
-                if(value.isEmpty){
-                  return "Enter your Email";
-                }
+              //  validator: (value) {
+              //    bool emailvalidate= RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!);
+              //   if(value.isEmpty){
+              //     return "Enter your Email";
+              //   }
                  
-                 if (!emailvalidate){
-                  return "Enter Valid Email";
-                 }
-                 return null;
+              //    if (!emailvalidate){
+              //     return "Enter Valid Email";
+              //    }
+              //    return null;
 
-              } ,
+              // } ,
             ),),
           
             Padding( 
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
                   controller: user,
+                  validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  a Username';
+                  }
+                return null;
+                  },
+            
               decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
               border:  OutlineInputBorder( borderRadius: BorderRadius.circular(20)),
@@ -86,6 +100,13 @@ class _schoolregisterState extends State<schoolregister> {
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
                   controller: phonecontroller,
+                  validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  your Phone Number';
+                  }
+                return null;
+                  },
+          
                   keyboardType: TextInputType.phone,
               decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
@@ -99,6 +120,13 @@ class _schoolregisterState extends State<schoolregister> {
                padding:const EdgeInsets.fromLTRB(0,15,0,15),
                    child:TextFormField(
                     controller: pass,
+                    validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  a password';
+                  }
+                return null;
+                  },
+            
                   obscureText:showpassword,
                   decoration: InputDecoration(
                   suffixIcon: 
@@ -116,17 +144,17 @@ class _schoolregisterState extends State<schoolregister> {
                 labelText: 'Enter Password',
               
               ),
-              validator: (value) {
-                if(value!.isEmpty)
-                {
-                  return "Enter Password";
-                }
-                else if(pass.text.length<5)
-                {
-                  return "Password Should be more than 5 characters long";
-                }
-                return null;
-              },
+              // validator: (value) {
+              //   if(value!.isEmpty)
+              //   {
+              //     return "Enter Password";
+              //   }
+              //   else if(pass.text.length<5)
+              //   {
+              //     return "Password Should be more than 5 characters long";
+              //   }
+              //   return null;
+              // },
             ),),
           
           
@@ -142,7 +170,7 @@ class _schoolregisterState extends State<schoolregister> {
               ),
               child:const Text('Register'),
               onPressed: (){
-          
+                      if (formkey.currentState!.validate()){
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const Text('Registration Successful!'),
                    backgroundColor: Colors.black,
@@ -156,6 +184,7 @@ class _schoolregisterState extends State<schoolregister> {
                    ),
                    
                   ));
+                      }
               },
           
               )),
@@ -178,10 +207,6 @@ class _schoolregisterState extends State<schoolregister> {
                   ),
               ]
             ))
-            // 
-          
-          
-            
             )]
              ),
           ), 

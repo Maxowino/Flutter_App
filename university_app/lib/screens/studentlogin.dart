@@ -30,8 +30,7 @@ class _studentloginState extends State<studentlogin> {
         
           child:  Form(
             key: slogindetails,
-            child: Column(  
-              //  crossAxisAlignment: CrossAxisAlignment.center,
+            child: Column( 
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
                

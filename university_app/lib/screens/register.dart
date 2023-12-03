@@ -74,6 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
                padding:EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
                   controller: user,
+                        validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  a Username';
+                  }
+                return null;
+                  },
               decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(10,0, 10,0),
               border:  OutlineInputBorder( borderRadius: BorderRadius.circular(20)),
@@ -86,6 +92,12 @@ class _HomeScreenState extends State<HomeScreen> {
                padding:EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
                   controller: phonecontroller,
+                        validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  your Phone Number';
+                  }
+                return null;
+                  },
                   keyboardType: TextInputType.phone,
               decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(10,0, 10,0),
@@ -99,6 +111,12 @@ class _HomeScreenState extends State<HomeScreen> {
                padding:EdgeInsets.fromLTRB(0,15,0,15),
                    child:TextFormField(
                     controller: pass,
+                          validator: (value) {
+                 if (value == null || value.isEmpty) {
+                return 'Please enter  a password';
+                  }
+                return null;
+                  },
                   obscureText:showpassword,
                   decoration: InputDecoration(
                   suffixIcon: 
@@ -116,17 +134,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 labelText: 'Enter Password',
               
               ),
-              validator: (value) {
-                if(value!.isEmpty)
-                {
-                  return "Enter Password";
-                }
-                else if(pass.text.length<5)
-                {
-                  return "Password Should be more than 5 characters long";
-                }
-                return null;
-              },
+              // validator: (value) {
+              //   if(value!.isEmpty)
+              //   {
+              //     return "Enter Password";
+              //   }
+              //   else if(pass.text.length<5)
+              //   {
+              //     return "Password Should be more than 5 characters long";
+              //   }
+              //   return null;
+              // },
             ),),
           
           
@@ -142,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child:const Text('Register'),
               onPressed: (){
-          
+                    if (formkey.currentState!.validate()){
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const Text('Registration Successful!'),
                    backgroundColor: Colors.black,
@@ -156,6 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    ),
                    
                   ));
+                    }
               },
           
               )),
