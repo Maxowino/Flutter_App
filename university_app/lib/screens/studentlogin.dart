@@ -105,7 +105,6 @@ class _studentloginState extends State<studentlogin> {
               onPressed: (){
                    if (slogindetails.currentState!.validate()){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const Homepage(),),);
-                //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const  Text('Login Successful!'),
                    backgroundColor: Colors.black,
