@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                        return null;
                   
-                    // Phone number validation logic
+                   
                   }),
                   buildTextFormField(pass, 'Enter Password', TextInputType.text, (value) {
                       if (value == null || value.isEmpty) {
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             } catch (e) {
               print('Error adding data to Firestore: $e');
-              // Handle error appropriately
+              
             }
           }
         },
