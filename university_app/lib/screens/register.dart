@@ -2,23 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 // import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/schoollogin.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class HomeScreen extends StatefulWidget{
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+  Future<void>addDataToFirestore(
+    String email,String phone, String pass, String user
+  )async{
+    CollectionReference registerReference=FirebaseFirestore.instance.collection('Students');
+
+    await registerReference.add({'email':email,'phone':phone,'password':pass,'username':user});
+    
+  }
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   bool showpassword=true;
- // List<user> users=[];
   final formkey= GlobalKey<FormState>();
   final TextEditingController email= TextEditingController();
-  final TextEditingController phonecontroller=TextEditingController();
+  final TextEditingController phone=TextEditingController();
   final TextEditingController pass=TextEditingController();
   final TextEditingController user=TextEditingController();
 
- 
- 
+  // TextEditingController emailcontroller=new TextEditingController();
+  // TextEditingController phone=new TextEditingController();
+  // TextEditingController password=new TextEditingController();
+  // TextEditingController username=new TextEditingController();
    
   @override
   Widget build(BuildContext context) {
@@ -91,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
              Padding( 
                padding:EdgeInsets.fromLTRB(0,15,0,15),
                 child:TextFormField(
-                  controller: phonecontroller,
+                  controller: phone,
                         validator: (value) {
                  if (value == null || value.isEmpty) {
                 return 'Please enter  your Phone Number';

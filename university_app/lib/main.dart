@@ -1,12 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/splashcreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+Future<void>addDataToFirestore(
+    email, phone,pass,user
+  )async{
+    CollectionReference registerReference=FirebaseFirestore.instance.collection('Students');
+
+    await registerReference.add({'email':'email@gmail.com','phone':'2345654321','password':'password','username':'username'});
+    
+  }
   runApp( MyApp());
 }
 
