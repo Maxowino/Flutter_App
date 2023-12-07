@@ -124,6 +124,10 @@ class _schoolregisterState extends State<schoolregister> {
                  if (value == null || value.isEmpty) {
                 return 'Please enter  a password';
                   }
+                 else if(pass.text.length<5)
+                {
+                  return "Password Should be more than 5 characters long";
+                }
                 return null;
                   },
             

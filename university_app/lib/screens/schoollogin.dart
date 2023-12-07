@@ -12,7 +12,6 @@ class Login extends StatefulWidget{
 
 class _LoginState extends State<Login> {
     bool showpassword=true;
-
     bool checkedbox=false;
  final GlobalKey<FormState> logindetails=GlobalKey<FormState>();
   final TextEditingController user=TextEditingController();
@@ -39,7 +38,7 @@ class _LoginState extends State<Login> {
                Icons.account_circle_sharp,
               color: Colors.black,
              size: 75.0,
-            //  semanticLabel: 'Text to announce in accessibility modes',
+            
               ),
               const Text('Login', style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
             Padding( 

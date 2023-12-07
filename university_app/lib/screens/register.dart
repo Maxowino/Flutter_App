@@ -63,9 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (value == null || value.isEmpty) {
                        return 'Please enter  a Password';
                   }
+                     else if(pass.text.length<5)
+                   {
+                  return "Password Should be more than 5 characters long";
+                   }
                        return null;
                   
-                    // Password validation logic
+                    // Password validation 
                   }, obscureText: showPassword),
                   buildElevatedButton(),
                   buildRichTextForLogin(),

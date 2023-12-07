@@ -9,7 +9,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // Call the function to add data to Firestore
+  
   await addDataToFirestore('email@gmail.com', '2345654321', 'password', 'username');
   runApp(MyApp());
 }

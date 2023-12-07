@@ -107,23 +107,6 @@ class _profileState extends State<profile> {
                     
                   ),
                 ),
-                // Positioned(
-                //   bottom:0,
-                //   right: 0,
-                //   child: Container(
-                //   height: 40,
-                //   width:40,
-                //   decoration: BoxDecoration(
-                //     shape: BoxShape.circle,
-                //     border: Border.all(
-                //       width: 4,
-                //       color: Theme.of(context).scaffoldBackgroundColor,
-                //     ),
-                //     color: Colors.black
-                //   ),
-                //   child:Icon(Icons.edit, color: Colors.white,),
-    
-                // ))
               ],
             ),
           ),
@@ -153,19 +136,6 @@ class _profileState extends State<profile> {
             child:const Text('Edit Profile'),
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder:(context) =>editprofile(),),);
-              //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              //    ScaffoldMessenger.of(context).showSnackBar( SnackBar
-              //    (content:const  Text('Login Successful!'),
-              //    backgroundColor: Colors.black,
-              //    duration:const Duration(seconds:2),
-              //    dismissDirection: DismissDirection.up,
-              //    behavior: SnackBarBehavior.floating,
-              //    margin: EdgeInsets.only(
-              //     bottom: MediaQuery.of(context).size.height - 170,
-              //     left: 40,
-              //     right:40,
-              //    ),
-              //   ));
             },
 
             )
