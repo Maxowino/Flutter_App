@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/splashcreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,20 +10,20 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   
-  await addDataToFirestore('email@gmail.com', '2345654321', 'password', 'username');
+  // await addDataToFirestore('email@gmail.com', '2345654321', 'password', 'username');
   runApp(MyApp());
 }
 
-Future<void> addDataToFirestore(email, phone, pass, user) async {
-  CollectionReference registerReference = FirebaseFirestore.instance.collection('Students');
+// Future<void> addDataToFirestore(email, phone, pass, user) async {
+//   CollectionReference registerReference = FirebaseFirestore.instance.collection('Students');
 
-  await registerReference.add({
-    'email': email,
-    'phone': phone,
-    'password': pass,
-    'username': user,
-  });
-}
+//   await registerReference.add({
+//     'email': email,
+//     'phone': phone,
+//     'password': pass,
+//     'username': user,
+//   });
+// }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
