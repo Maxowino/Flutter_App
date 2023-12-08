@@ -10,6 +10,7 @@ class schoolregister extends StatefulWidget{
 
 class _schoolregisterState extends State<schoolregister> {
   bool showpassword=true;
+  
  // List<user> users=[];
   final formkey= GlobalKey<FormState>();
   final TextEditingController email= TextEditingController();
@@ -50,9 +51,14 @@ class _schoolregisterState extends State<schoolregister> {
               child:TextFormField(
                controller: email,
                validator: (value) {
+                 
                  if (value == null || value.isEmpty) {
                 return 'Please enter  your email';
                   }
+                 bool emailvalidate= RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                   if (!emailvalidate){
+                  return "Enter Valid Email";
+                 }
                 return null;
                   },
              
@@ -148,17 +154,6 @@ class _schoolregisterState extends State<schoolregister> {
                 labelText: 'Enter Password',
               
               ),
-              // validator: (value) {
-              //   if(value!.isEmpty)
-              //   {
-              //     return "Enter Password";
-              //   }
-              //   else if(pass.text.length<5)
-              //   {
-              //     return "Password Should be more than 5 characters long";
-              //   }
-              //   return null;
-              // },
             ),),
           
           

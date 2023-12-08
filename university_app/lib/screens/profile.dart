@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 // import 'package:university_app/screens/register.dart';
 // import 'package:university_app/screens/editprofile.dart';
 // import 'package:university_app/screens/schoollogin.dart';
-import 'package:university_app/screens/selectuser.dart';
 
 class profile extends StatefulWidget{
   @override
