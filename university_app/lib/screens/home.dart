@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:university_app/screens/login.dart';
-import 'package:university_app/screens/editprofile.dart';
 import 'package:university_app/screens/feedback.dart';
+import 'package:university_app/screens/notifications.dart';
 import 'package:university_app/screens/selectuser.dart';
 import 'package:university_app/screens/settings.dart';
 class Homee extends StatelessWidget{
@@ -111,16 +111,20 @@ class Homee extends StatelessWidget{
             ),
           ),
         ),
+        //  ListTile(
+        //   leading: Icon(Icons.account_circle),
+        //   title: Text('Profile'),
+        //   onTap:(){
+        //     Navigator.push(context, MaterialPageRoute(builder:(context) => profile(),));
+        //   }
+        // ),
          ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text('Profile'),
-          onTap:(){
-            Navigator.push(context, MaterialPageRoute(builder:(context) => editprofile(),));
-          }
-        ),
-        const ListTile(
           leading: Icon(Icons.notifications),
-          title: Text('Notification'),
+          title: Text('Notifications'),
+          onTap: (){
+            Navigator.push(context,MaterialPageRoute(builder:(context)=>notifications(),));
+
+          }
         ),
        
         ListTile(
