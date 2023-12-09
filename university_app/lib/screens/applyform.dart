@@ -137,7 +137,14 @@ class _DataEntryFormState extends State<DataEntryForm> {
               ),
               SizedBox(height: 16),
               ElevatedButton(
-                onPressed: _submitForm,
+              style: ElevatedButton.styleFrom(
+              minimumSize:const Size(180,50),
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+              shape: const StadiumBorder(),
+              side: BorderSide.none
+            ),
+  onPressed: _submitForm,
                 child: Text('Submit'),
               ),
             ],
