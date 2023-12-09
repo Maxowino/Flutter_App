@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:university_app/screens/schoollogin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -15,6 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController phone = TextEditingController();
   final TextEditingController pass = TextEditingController();
   final TextEditingController user = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -37,44 +40,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     size: 75.0,
                   ),
                   const Text('Register', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  buildTextFormField(email, 'Enter Email', TextInputType.emailAddress, (value) { 
-                     if (value == null || value.isEmpty) {
-                      return 'Please enter an  Email';
-                  }
-                  bool emailvalidate= RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
-                   if (!emailvalidate){
-                  return "Enter a Valid Email";
-                 }
-                      return null;
-                   
+                  buildTextFormField(email, 'Enter Email', TextInputType.emailAddress, (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an Email';
+                    }
+                    bool emailvalidate = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                    if (!emailvalidate) {
+                      return "Enter a Valid Email";
+                    }
+                    return null;
                   }),
                   buildTextFormField(user, 'Enter Username', TextInputType.text, (value) {
-                      if (value == null || value.isEmpty) {
-                    return 'Please enter  a Username';
-                  }
-                      return null;
-                  
-                   
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a Username';
+                    }
+                    return null;
                   }),
                   buildTextFormField(phone, 'Enter Phone Number', TextInputType.phone, (value) {
-                     if (value == null || value.isEmpty) {
-                      return 'Please enter  a Phone Number';
-                  }
-                       return null;
-                  
-                   
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a Phone Number';
+                    }
+                    return null;
                   }),
                   buildTextFormField(pass, 'Enter Password', TextInputType.text, (value) {
-                      if (value == null || value.isEmpty) {
-                       return 'Please enter  a Password';
-                  }
-                     else if(pass.text.length<6)
-                   {
-                  return "Password Should be more than 6 characters long";
-                   }
-                       return null;
-                  
-                    // Password validation 
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a Password';
+                    } else if (pass.text.length < 6) {
+                      return "Password Should be more than 6 characters long";
+                    }
+                    return null;
                   }, obscureText: showPassword),
                   buildElevatedButton(),
                   buildRichTextForLogin(),
@@ -130,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (formKey.currentState!.validate()) {
             try {
               await addDataToFirestore(email.text, phone.text, pass.text, user.text);
-               await registerStudent(email.text, pass.text);
+              await registerStudent(email.text, pass.text);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text('Registration Successful!'),
@@ -147,7 +141,6 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             } catch (e) {
               print('Error adding data to Firestore: $e');
-              
             }
           }
         },
@@ -184,20 +177,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     await registerReference.add({'email': email, 'phone': phone, 'password': pass, 'username': user});
   }
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> registerStudent(String email, String pass) async {
+  Future<UserCredential> registerStudent(String email, String pass) async {
     try {
-      await _auth.createUserWithEmailAndPassword(
-        email:email,
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
         password: pass,
       );
       print("User registered successfully!");
+      return userCredential;
     } catch (e) {
       print("Error registering user: $e");
       // You can handle specific error cases here if needed
+      throw e;
     }
   }
-
 }
-

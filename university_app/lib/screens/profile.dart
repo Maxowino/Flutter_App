@@ -12,10 +12,8 @@ class _ProfileState extends State<profile> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  String? fullName = "";
   String? email = "";
-  String? phoneNumber = "";
-  String? course = "";
+  String? phone = "";
   String? password = "";
   String? username = "";
 
@@ -26,28 +24,36 @@ class _ProfileState extends State<profile> {
     fetchUserData();
   }
 
-  Future<void> fetchUserData() async {
-    try {
-      // Get the current user
-      User? user = _auth.currentUser;
+ Future<void> fetchUserData() async {
+  try {
+    // Get the current user
+    User? user = _auth.currentUser;
 
-      if (user != null) {
-        // Use the user's UID to fetch their data
-        DocumentSnapshot documentSnapshot =
-            await _firestore.collection('Students').doc(user.uid).get();
+    if (user != null) {
+      // Use the user's UID to fetch their data
+      DocumentSnapshot documentSnapshot =
+          await _firestore.collection('Students').doc(user.uid).get();
 
-        // Update state variables with user data
+      // Check if the document exists
+      if (documentSnapshot.exists) {
+        // Get the data as a Map
+        Map<String, dynamic>? userData = documentSnapshot.data() as Map<String, dynamic>?;
+
+        // Update state variables with user data if the fields exist
         setState(() {
-          email = documentSnapshot['email'];
-          password = documentSnapshot['password'];
-          phoneNumber = documentSnapshot['phone'];
-          username = documentSnapshot['username'];
+          email = userData?['email'] ?? "";
+          password = userData?['password'] ?? "";
+          phone = userData?['phone'] ?? "";
+          username = userData?['username'] ?? "";
         });
+      } else {
+        print('Document does not exist.');
       }
-    } catch (e) {
-      print('Error fetching user data: $e');
     }
+  } catch (e) {
+    print('Error fetching user data: $e');
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +115,7 @@ class _ProfileState extends State<profile> {
                 height: 35,
               ),
               buildTextField("Email", email ?? "", false),
-              buildTextField("Phone Number", phoneNumber ?? "", false),
+              buildTextField("Phone Number", phone?? "", false),
               buildTextField("Password", password ?? "", true),
               buildTextField("Username", username ?? "", true),
             ],
