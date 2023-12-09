@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class profile extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class profile extends StatefulWidget {
 class _ProfileState extends State<profile> {
   bool showPassword = false;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String? fullName = "";
   String? email = "";
@@ -26,17 +28,22 @@ class _ProfileState extends State<profile> {
 
   Future<void> fetchUserData() async {
     try {
-      DocumentSnapshot documentSnapshot =
-          await _firestore.collection('Students').doc('your_user_id').get();
+      // Get the current user
+      User? user = _auth.currentUser;
 
-      // Update state variables with user data
-      setState(() {
-        
-        email = documentSnapshot['email'];
-        password = documentSnapshot['password'];
-        phoneNumber = documentSnapshot['phone'];
-        username = documentSnapshot['username'];
-      });
+      if (user != null) {
+        // Use the user's UID to fetch their data
+        DocumentSnapshot documentSnapshot =
+            await _firestore.collection('Students').doc(user.uid).get();
+
+        // Update state variables with user data
+        setState(() {
+          email = documentSnapshot['email'];
+          password = documentSnapshot['password'];
+          phoneNumber = documentSnapshot['phone'];
+          username = documentSnapshot['username'];
+        });
+      }
     } catch (e) {
       print('Error fetching user data: $e');
     }
