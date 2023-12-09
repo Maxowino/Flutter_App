@@ -144,7 +144,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
               shape: const StadiumBorder(),
               side: BorderSide.none
             ),
-  onPressed: _submitForm,
+                onPressed: _submitForm,
                 child: Text('Submit'),
               ),
             ],
