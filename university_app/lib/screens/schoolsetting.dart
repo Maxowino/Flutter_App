@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-class settings extends StatefulWidget{
- 
+class schoolsetting extends StatefulWidget{
   @override
-  State<settings> createState() => _settingsState();
+  State<schoolsetting> createState() => _schoolsettingState();
 }
 
-class _settingsState extends State<settings> {
-  bool check=true;
+class _schoolsettingState extends State<schoolsetting> {
+   bool check=true;
    bool check1=true;
   bool check2=true;
-  @override
-  Widget build(BuildContext context){
-
+@override
+Widget build(BuildContext context){
+  
 return Scaffold(
   backgroundColor: Colors.grey,
    
@@ -28,33 +27,30 @@ return Scaffold(
          
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height:10),
-              SwitchListTile(
+              const SizedBox(height:10),
+              const SwitchListTile(
                 activeColor: Colors.black,
-                value: check1,
-                title: Text('NewsLetter',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
-                onChanged: (value){
-                   setState(() {
-                      check1=!check1;
-                  });
-
-                },
+                value: false,
+                title: Text('Order Updates',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
+                onChanged:null,
+                 
               ),
               SwitchListTile(
                 activeColor: Colors.black,
                 value: check2,
-                title: Text('Updates',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
+                title: const Text('Notifications',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                 onChanged: (value){
-                   setState(() {
+                     setState(() {
                       check2=!check2;
                   });
 
+                
                 },
               ),
               SwitchListTile(
                 activeColor: Colors.black,
                 value:check,
-                title: Text('Events',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
+                title: const Text('Events',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                 onChanged: (value){
                   setState(() {
                       check=!check;
