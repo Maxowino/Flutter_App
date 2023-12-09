@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/profile.dart';
-import 'package:university_app/screens/grades.dart';
+import 'package:university_app/screens/applyform.dart';
 import 'package:university_app/screens/home.dart';
 import 'package:university_app/screens/course.dart';
 
@@ -20,7 +20,7 @@ class _HomepageState extends State<Homepage> {
   List<Widget> pagelist=[
     Homee(),
     Course(),
-    grades(),
+    DataEntryForm(),
     profile(),
 
   ];
