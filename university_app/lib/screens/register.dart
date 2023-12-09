@@ -39,11 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Text('Register', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                   buildTextFormField(email, 'Enter Email', TextInputType.emailAddress, (value) { 
                      if (value == null || value.isEmpty) {
-                      return 'Please enter  a Email';
+                      return 'Please enter an  Email';
                   }
                   bool emailvalidate= RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
                    if (!emailvalidate){
-                  return "Enter Valid Email";
+                  return "Enter a Valid Email";
                  }
                       return null;
                    
@@ -68,9 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (value == null || value.isEmpty) {
                        return 'Please enter  a Password';
                   }
-                     else if(pass.text.length<5)
+                     else if(pass.text.length<6)
                    {
-                  return "Password Should be more than 5 characters long";
+                  return "Password Should be more than 6 characters long";
                    }
                        return null;
                   
