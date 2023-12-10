@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:university_app/screens/profile.dart';
-// import 'package:university_app/screens/home.dart';
-// import 'package:university_app/screens/course.dart';
 import 'package:university_app/screens/resources.dart';
 import 'package:university_app/screens/schoolhome.dart';
 import 'package:university_app/screens/schoolrequests.dart';
@@ -20,10 +17,8 @@ class _schoolHomepageState extends State<schoolHomepage> {
   
   List<Widget> pagelist=[
     schoolHome(),
-    resources(),
+    Resources(),
     schoolrequests(),
-  
-
   ];
   @override
   Widget build(BuildContext context) {
