@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Import Firebase Auth
 import 'package:university_app/screens/feedback.dart';
 import 'package:university_app/screens/selectuser.dart';
 
@@ -161,24 +162,32 @@ class _ResourcesState extends State<Resources> {
     );
   }
 
-  Future<void> storeDataInFirestore() async {
+   Future<void> storeDataInFirestore() async {
     try {
-      await FirebaseFirestore.instance.collection('schoolrequests').add({
-        'exerciseBooks': int.parse(exerciseBooksController.text),
-        'form1Textbooks': int.parse(form1TextbooksController.text),
-        'form2Textbooks': int.parse(form2TextbooksController.text),
-        'form3Textbooks': int.parse(form3TextbooksController.text),
-        'form4Textbooks': int.parse(form4TextbooksController.text),
-        'labEquipment': int.parse(labEquipmentController.text),
-      });
+      // Get the currently logged-in user
+      User? user = FirebaseAuth.instance.currentUser;
+      
+      if (user != null) {
+        // Use the user's UID as the document ID
+        await FirebaseFirestore.instance.collection('schoolrequests').doc(user.uid).set({
+          'exerciseBooks': int.parse(exerciseBooksController.text),
+          'form1Textbooks': int.parse(form1TextbooksController.text),
+          'form2Textbooks': int.parse(form2TextbooksController.text),
+          'form3Textbooks': int.parse(form3TextbooksController.text),
+          'form4Textbooks': int.parse(form4TextbooksController.text),
+          'labEquipment': int.parse(labEquipmentController.text),
+        });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Data submitted successfully!'),
-          backgroundColor: Colors.black,
-          duration: const Duration(seconds: 3),
-        ),
-      );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Data submitted successfully!'),
+            backgroundColor: Colors.black,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      } else {
+        print('User not logged in');
+      }
     } catch (e) {
       print('Error storing data in Firestore: $e');
     }
