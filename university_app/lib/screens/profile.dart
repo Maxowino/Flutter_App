@@ -23,8 +23,7 @@ class _ProfileState extends State<profile> {
     // Fetch user data from Firestore when the widget initializes
     fetchUserData();
   }
-
- Future<void> fetchUserData() async {
+Future<void> fetchUserData() async {
   try {
     // Get the current user
     User? user = _auth.currentUser;
@@ -47,7 +46,7 @@ class _ProfileState extends State<profile> {
           username = userData?['username'] ?? "";
         });
       } else {
-        print('Document does not exist.');
+        print('Document does not exist for user: ${user.uid}');
       }
     }
   } catch (e) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:university_app/screens/schoollogin.dart';
+import 'package:university_app/screens/studentlogin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -123,8 +123,19 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () async {
           if (formKey.currentState!.validate()) {
             try {
-              await addDataToFirestore(email.text, phone.text, pass.text, user.text);
-              await registerStudent(email.text, pass.text);
+              UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+                email: email.text,
+                password: pass.text,
+              );
+
+              // Use the UID as the document ID in Firestore
+              await FirebaseFirestore.instance.collection('Students').doc(userCredential.user?.uid).set({
+                'email': email.text,
+                'phone': phone.text,
+                'password': pass.text,
+                'username': user.text,
+              });
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text('Registration Successful!'),
@@ -140,14 +151,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             } catch (e) {
-              print('Error adding data to Firestore: $e');
+              print('Error registering user or adding data to Firestore: $e');
             }
           }
         },
       ),
     );
   }
-
   Widget buildRichTextForLogin() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -163,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(color: Colors.white, fontSize: 14),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => studentlogin()));
                 },
             ),
           ],
