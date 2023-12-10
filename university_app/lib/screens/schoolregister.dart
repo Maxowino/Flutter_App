@@ -136,7 +136,7 @@ class _schoolregisterState extends State<schoolregister> {
                 'password': pass.text,
                 'location': user.text,
               });
-
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>Login()));
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text('Registration Successful!'),

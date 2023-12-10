@@ -67,7 +67,7 @@ class _HomepageState extends State<Homepage> {
       ),  
       BottomNavigationBarItem(
          icon: Icon(Icons.grade_sharp),
-         label:'Grades',
+         label:'Application',
          backgroundColor: Colors.black,
        
       ),   

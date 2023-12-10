@@ -15,7 +15,7 @@ class _ProfileState extends State<profile> {
   String? email = "";
   String? phone = "";
   String? password = "";
-  String? username = "";
+  String? location = "";
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ Future<void> fetchUserData() async {
     if (user != null) {
       // Use the user's UID to fetch their data
       DocumentSnapshot documentSnapshot =
-          await _firestore.collection('Students').doc(user.uid).get();
+          await _firestore.collection('Schools').doc(user.uid).get();
 
       // Check if the document exists
       if (documentSnapshot.exists) {
@@ -43,7 +43,7 @@ Future<void> fetchUserData() async {
           email = userData?['email'] ?? "";
           password = userData?['password'] ?? "";
           phone = userData?['phone'] ?? "";
-          username = userData?['username'] ?? "";
+          location = userData?['location'] ?? "";
         });
       } else {
         print('Document does not exist for user: ${user.uid}');
@@ -116,7 +116,7 @@ Future<void> fetchUserData() async {
               buildTextField("Email", email ?? "", false),
               buildTextField("Phone Number", phone?? "", false),
               buildTextField("Password", password ?? "", true),
-              buildTextField("Username", username ?? "", true),
+              buildTextField("Location", location ?? "", true),
             ],
           ),
         ),
