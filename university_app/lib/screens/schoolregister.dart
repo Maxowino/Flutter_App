@@ -1,24 +1,75 @@
+
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-// import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/schoollogin.dart';
 
-class schoolregister extends StatefulWidget{
+class schoolregister extends StatefulWidget {
   @override
-  State<schoolregister> createState() => _schoolregisterState();
+  State<schoolregister> createState() => _SchoolRegisterState();
 }
 
-class _schoolregisterState extends State<schoolregister> {
- bool showPassword = true;
+class _SchoolRegisterState extends State<schoolregister> {
+  bool showPassword = true;
   final formKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
   final TextEditingController phone = TextEditingController();
   final TextEditingController pass = TextEditingController();
-  final TextEditingController user = TextEditingController();
+  String? selectedLocation;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Define a list of locations for the dropdown
+ List<String> locations = [
+  'Baringo',
+  'Bomet',
+  'Bungoma',
+  'Busia',
+  'Elgeyo-Marakwet',
+  'Embu',
+  'Garissa',
+  'Homa Bay',
+  'Isiolo',
+  'Kajiado',
+  'Kakamega',
+  'Kericho',
+  'Kiambu',
+  'Kilifi',
+  'Kirinyaga',
+  'Kisii',
+  'Kisumu',
+  'Kitui',
+  'Kwale',
+  'Laikipia',
+  'Lamu',
+  'Machakos',
+  'Makueni',
+  'Mandera',
+  'Marsabit',
+  'Meru',
+  'Migori',
+  'Mombasa',
+  'Murang\'a',
+  'Nairobi',
+  'Nakuru',
+  'Nandi',
+  'Narok',
+  'Nyamira',
+  'Nyandarua',
+  'Nyeri',
+  'Samburu',
+  'Siaya',
+  'Taita-Taveta',
+  'Tana River',
+  'Tharaka-Nithi',
+  'Trans Nzoia',
+  'Turkana',
+  'Uasin Gishu',
+  'Vihiga',
+  'Wajir',
+  'West Pokot',
+];
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +92,53 @@ class _schoolregisterState extends State<schoolregister> {
                     size: 75.0,
                   ),
                   const Text('Register', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  buildTextFormField(email, 'Enter Email', TextInputType.emailAddress, (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter an Email';
-                    }
-                    bool emailvalidate = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
-                    if (!emailvalidate) {
-                      return "Enter a Valid Email";
-                    }
-                    return null;
-                  }),
-                  buildTextFormField(user, 'Enter your Location', TextInputType.text, (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a Location';
-                    }
-                    return null;
-                  }),
-                  buildTextFormField(phone, 'Enter Phone Number', TextInputType.phone, (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a Phone Number';
-                    }
-                    return null;
-                  }),
-                  buildTextFormField(pass, 'Enter Password', TextInputType.text, (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a Password';
-                    } else if (pass.text.length < 6) {
-                      return "Password Should be more than 6 characters long";
-                    }
-                    return null;
-                  }, obscureText: showPassword),
+                  buildTextFormField(
+                    email,
+                    'Enter Email',
+                    TextInputType.emailAddress,
+                    (value) {
+                      // Validation logic for email
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an Email';
+                      }
+                      bool emailvalidate = RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                      ).hasMatch(value);
+                      if (!emailvalidate) {
+                        return "Enter a Valid Email";
+                      }
+                      return null;
+                    },
+                  ),
+                  // Replace the location text form field with a DropdownButtonFormField
+                  buildLocationDropdown(),
+                  buildTextFormField(
+                    phone,
+                    'Enter Phone Number',
+                    TextInputType.phone,
+                    (value) {
+                      // Validation logic for phone number
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a Phone Number';
+                      }
+                      return null;
+                    },
+                  ),
+                  buildTextFormField(
+                    pass,
+                    'Enter Password',
+                    TextInputType.text,
+                    (value) {
+                      // Validation logic for password
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a Password';
+                      } else if (pass.text.length < 6) {
+                        return "Password Should be more than 6 characters long";
+                      }
+                      return null;
+                    },
+                    obscureText: showPassword,
+                  ),
                   buildElevatedButton(),
                   buildRichTextForLogin(),
                 ],
@@ -97,6 +165,34 @@ class _schoolregisterState extends State<schoolregister> {
         decoration: buildInputDecoration(labelText),
         validator: validator,
         obscureText: obscureText,
+      ),
+    );
+  }
+
+  // Replace the location text form field with a DropdownButtonFormField
+  Widget buildLocationDropdown() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+      child: DropdownButtonFormField(
+        value: selectedLocation,
+        items: locations.map((location) {
+          return DropdownMenuItem(
+            value: location,
+            child: Text(location),
+          );
+        }).toList(),
+        onChanged: (value) {
+          setState(() {
+            selectedLocation = value as String?;
+          });
+        },
+        decoration: buildInputDecoration('Select Your Location'),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please select a Location';
+          }
+          return null;
+        },
       ),
     );
   }
@@ -134,9 +230,11 @@ class _schoolregisterState extends State<schoolregister> {
                 'email': email.text,
                 'phone': phone.text,
                 'password': pass.text,
-                'location': user.text,
+                'location': selectedLocation,
               });
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>Login()));
+
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text('Registration Successful!'),
@@ -159,6 +257,7 @@ class _schoolregisterState extends State<schoolregister> {
       ),
     );
   }
+
   Widget buildRichTextForLogin() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -174,33 +273,12 @@ class _schoolregisterState extends State<schoolregister> {
               style: TextStyle(color: Colors.white, fontSize: 14),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>Login()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
                 },
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future<void> addDataToFirestore(String email, String phone, String pass, String user) async {
-    CollectionReference registerReference = FirebaseFirestore.instance.collection('Schools');
-
-    await registerReference.add({'email': email, 'phone': phone, 'password': pass, 'location': user});
-  }
-
-  Future<UserCredential> registerStudent(String email, String pass) async {
-    try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: pass,
-      );
-      print("User registered successfully!");
-      return userCredential;
-    } catch (e) {
-      print("Error registering user: $e");
-      // You can handle specific error cases here if needed
-      throw e;
-    }
   }
 }

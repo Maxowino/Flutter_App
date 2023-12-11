@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class profile extends StatefulWidget {
+class schoolprofile extends StatefulWidget {
   @override
-  State<profile> createState() => _ProfileState();
+  State<schoolprofile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<profile> {
+class _ProfileState extends State<schoolprofile> {
   bool showPassword = false;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;

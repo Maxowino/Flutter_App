@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:university_app/screens/feedback.dart';
 import 'package:university_app/screens/notifications.dart';
 import 'package:university_app/screens/selectuser.dart';
-import 'package:university_app/screens/settings.dart';
+import 'package:university_app/screens/schoolsetting.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class schoolHome extends StatelessWidget {
@@ -81,7 +81,7 @@ class schoolHome extends StatelessWidget {
               leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => settings()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>schoolsetting()));
               },
             ),
             ListTile(

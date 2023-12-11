@@ -10,7 +10,7 @@ class schoolrequests extends StatefulWidget {
 }
 
 class _SchoolRequestsState extends State<schoolrequests> {
- List<Map<String, dynamic>> requests = [];
+  List<Map<String, dynamic>> requests = [];
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class _SchoolRequestsState extends State<schoolrequests> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('My Requests', style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
-              UserDataList(),
+              UserDataTable(),
             ],
           ),
         ),
@@ -103,7 +103,7 @@ class _SchoolRequestsState extends State<schoolrequests> {
   }
 }
 
-class UserDataList extends StatelessWidget {
+class UserDataTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
@@ -115,7 +115,7 @@ class UserDataList extends StatelessWidget {
       );
     }
 
-   return StreamBuilder(
+    return StreamBuilder(
       stream: FirebaseFirestore.instance
           .collection('schoolrequests')
           .doc(user.uid)
@@ -136,28 +136,36 @@ class UserDataList extends StatelessWidget {
         // Retrieve data from the snapshot
         Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
 
-        return ListView(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          children: [
-            ListTile(
-              title: Text("Exercise Books: ${data['exerciseBooks']}"),
-            ),
-            ListTile(
-              title: Text("Form 1 Textbooks: ${data['form1Textbooks']}"),
-            ),
-            ListTile(
-              title: Text("Form 2 Textbooks: ${data['form2Textbooks']}"),
-            ),
-            ListTile(
-              title: Text("Form 3 Textbooks: ${data['form3Textbooks']}"),
-            ),
-            ListTile(
-              title: Text("Form 4 Textbooks: ${data['form4Textbooks']}"),
-            ),
-            ListTile(
-              title: Text("Lab Equipment: ${data['labEquipment']}"),
-            ),
+        return DataTable(
+          columns: [
+            DataColumn(label: Text('Item')),
+            DataColumn(label: Text('Quantity')),
+          ],
+          rows: [
+            DataRow(cells: [
+              DataCell(Text('Exercise Books')),
+              DataCell(Text('${data['exerciseBooks']}')),
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Form 1 Textbooks')),
+              DataCell(Text('${data['form1Textbooks']}')),
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Form 2 Textbooks')),
+              DataCell(Text('${data['form2Textbooks']}')),
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Form 3 Textbooks')),
+              DataCell(Text('${data['form3Textbooks']}')),
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Form 4 Textbooks')),
+              DataCell(Text('${data['form4Textbooks']}')),
+            ]),
+            DataRow(cells: [
+              DataCell(Text('Lab Equipment')),
+              DataCell(Text('${data['labEquipment']}')),
+            ]),
           ],
         );
       },

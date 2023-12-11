@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:university_app/screens/resources.dart';
 import 'package:university_app/screens/schoolhome.dart';
 import 'package:university_app/screens/schoolrequests.dart';
-
+import 'package:university_app/screens/schoolprofile.dart';
 
 class schoolHomepage extends StatefulWidget{
   const schoolHomepage({super.key});
@@ -19,14 +19,11 @@ class _schoolHomepageState extends State<schoolHomepage> {
     schoolHome(),
     Resources(),
     schoolrequests(),
+    schoolprofile(),
   ];
   @override
   Widget build(BuildContext context) {
    return  Scaffold(
-  //  appBar:AppBar(title:const Text("Homepage"),backgroundColor: Colors.black,
-                  
-  //  ),
-
     backgroundColor: Colors.grey,
     body:IndexedStack(
       children: pagelist,
@@ -65,7 +62,13 @@ class _schoolHomepageState extends State<schoolHomepage> {
          label:'My Requests',
          backgroundColor: Colors.black,
        
-      ),   
+      ), 
+        BottomNavigationBarItem(
+         icon: Icon(Icons.person),
+         label:'Profile',
+        backgroundColor: Colors.black,
+       
+      ),  
 
     ],
    
