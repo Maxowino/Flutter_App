@@ -1,23 +1,20 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:university_app/screens/schoolhomepage.dart';
-import 'package:university_app/screens/schoolregister.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:university_app/screens/adminhomepage.dart';
 
 
-class Login extends StatefulWidget{
-  
+class adminlogin extends StatefulWidget{
   @override
-  State<Login> createState() => _LoginState();
+  State<adminlogin> createState() => _adminloginState();
 }
 
-class _LoginState extends State<Login> {
+class _adminloginState extends State<adminlogin> {
     bool showpassword=true;
     bool checkedbox=false;
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    final GlobalKey<FormState> logindetails=GlobalKey<FormState>();
-    final TextEditingController user=TextEditingController();
-    final TextEditingController pass=TextEditingController();
+ final GlobalKey<FormState> logindetails=GlobalKey<FormState>();
+  final TextEditingController user=TextEditingController();
+  final TextEditingController pass=TextEditingController();
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -104,15 +101,9 @@ class _LoginState extends State<Login> {
                 side: BorderSide.none
               ),
               child:const Text('Login'),
-              onPressed: ()async{
+              onPressed: (){
                 if (logindetails.currentState!.validate()) {
-                   try {
-                          await _auth.signInWithEmailAndPassword(
-                            email: user.text.trim(),
-                            password: pass.text,
-                          );
-                   
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolHomepage(),),);
+             Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>adminhomepage(),),);
                 //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const  Text('Login Successful!'),
@@ -126,69 +117,11 @@ class _LoginState extends State<Login> {
                     right:40,
                    ),
                    
-                  ));}
-                 catch (e) {
-                          print('Error signing in: $e');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: const Text('Invalid credentials. Please try again.'),
-                              backgroundColor: Colors.red,
-                              duration: const Duration(seconds: 3),
-                               dismissDirection: DismissDirection.up,
-                              behavior: SnackBarBehavior.floating,
-                              margin: EdgeInsets.only(
-                                bottom: MediaQuery.of(context).size.height - 170,
-                                left: 40,
-                                right: 40,
-                              ),
-                              
-                            ),
-                          );
-                        }
+                  ));
               }
               }
               )
-            ),
-            SizedBox(height: 20,),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Checkbox(
-                  value: checkedbox, onChanged: (bool? ischecked){
-                   setState(() {
-                      checkedbox=ischecked!;
-                   });
-                   
-                  }
-                  ),
-                  Text('Remember Me', style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),)
-              ],
-            ),
-
-             
-                Padding( 
-                  padding:const EdgeInsets.fromLTRB(0,15,0,15),
-                  child:RichText(
-            text:  TextSpan(
-              children:[
-                  const TextSpan(
-                    text: "Don't Have an Account? ",
-                    style: TextStyle(color: Colors.black,fontSize:14)
-                  ),
-                  TextSpan(
-                    text: "Register Now",
-                    style: const TextStyle(color: Colors.white,fontSize: 14),
-                    recognizer: TapGestureRecognizer()..onTap=(){
-                     Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolregister(),));
-          
-                    }
-                  ),
-              ]
-            ))
-             ), 
-             
-                 
-                   
+            ),             
              ],),
           )),
         

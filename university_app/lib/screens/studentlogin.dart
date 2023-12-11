@@ -124,7 +124,15 @@ class _studentloginState extends State<studentlogin> {
                             SnackBar(
                               content: const Text('Invalid credentials. Please try again.'),
                               backgroundColor: Colors.red,
-                              duration: const Duration(seconds: 2),
+                              duration: const Duration(seconds: 3),
+                               dismissDirection: DismissDirection.up,
+                              behavior: SnackBarBehavior.floating,
+                              margin: EdgeInsets.only(
+                                bottom: MediaQuery.of(context).size.height - 170,
+                                left: 40,
+                                right: 40,
+                              ),
+                              
                             ),
                           );
                         }
