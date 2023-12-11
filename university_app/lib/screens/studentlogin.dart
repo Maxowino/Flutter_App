@@ -42,7 +42,7 @@ class _studentloginState extends State<studentlogin> {
                     controller: user,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter  your username';
+                        return 'Please enter  your Email';
                       }
                       return null;
                     },
@@ -50,7 +50,7 @@ class _studentloginState extends State<studentlogin> {
                       suffixIcon: const Icon(Icons.person),
                       contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                      labelText: 'Enter Username',
+                      labelText: 'Enter Your Email',
                     ),
                   ),
                 ),

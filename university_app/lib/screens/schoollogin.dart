@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
                controller: user,
                 validator: (value) {
                  if (value == null || value.isEmpty) {
-                return 'Please enter username';
+                return 'Please enter an Email';
                   }
                 return null;
                   },
@@ -57,7 +57,7 @@ class _LoginState extends State<Login> {
                 suffixIcon: const Icon(Icons.person),
               contentPadding: const EdgeInsets.fromLTRB(10,0, 10,0),
              border:  OutlineInputBorder( borderRadius: BorderRadius.circular(20)),
-                labelText: 'Enter Username',
+                labelText: 'Enter Your Email',
               
               ),
             ),),
@@ -69,7 +69,7 @@ class _LoginState extends State<Login> {
                   controller: pass,
                    validator: (value) {
                    if (value == null || value.isEmpty) {
-                  return 'Please enter password';
+                  return 'Please enter your password';
                   }
                      return null;
                       },
