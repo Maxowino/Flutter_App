@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,55 +20,55 @@ class _SchoolRegisterState extends State<schoolregister> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Define a list of locations for the dropdown
- List<String> locations = [
-  'Baringo',
-  'Bomet',
-  'Bungoma',
-  'Busia',
-  'Elgeyo-Marakwet',
-  'Embu',
-  'Garissa',
-  'Homa Bay',
-  'Isiolo',
-  'Kajiado',
-  'Kakamega',
-  'Kericho',
-  'Kiambu',
-  'Kilifi',
-  'Kirinyaga',
-  'Kisii',
-  'Kisumu',
-  'Kitui',
-  'Kwale',
-  'Laikipia',
-  'Lamu',
-  'Machakos',
-  'Makueni',
-  'Mandera',
-  'Marsabit',
-  'Meru',
-  'Migori',
-  'Mombasa',
-  'Murang\'a',
-  'Nairobi',
-  'Nakuru',
-  'Nandi',
-  'Narok',
-  'Nyamira',
-  'Nyandarua',
-  'Nyeri',
-  'Samburu',
-  'Siaya',
-  'Taita-Taveta',
-  'Tana River',
-  'Tharaka-Nithi',
-  'Trans Nzoia',
-  'Turkana',
-  'Uasin Gishu',
-  'Vihiga',
-  'Wajir',
-  'West Pokot',
-];
+  List<String> locations = [
+    'Baringo',
+    'Bomet',
+    'Bungoma',
+    'Busia',
+    'Elgeyo-Marakwet',
+    'Embu',
+    'Garissa',
+    'Homa Bay',
+    'Isiolo',
+    'Kajiado',
+    'Kakamega',
+    'Kericho',
+    'Kiambu',
+    'Kilifi',
+    'Kirinyaga',
+    'Kisii',
+    'Kisumu',
+    'Kitui',
+    'Kwale',
+    'Laikipia',
+    'Lamu',
+    'Machakos',
+    'Makueni',
+    'Mandera',
+    'Marsabit',
+    'Meru',
+    'Migori',
+    'Mombasa',
+    'Murang\'a',
+    'Nairobi',
+    'Nakuru',
+    'Nandi',
+    'Narok',
+    'Nyamira',
+    'Nyandarua',
+    'Nyeri',
+    'Samburu',
+    'Siaya',
+    'Taita-Taveta',
+    'Tana River',
+    'Tharaka-Nithi',
+    'Trans Nzoia',
+    'Turkana',
+    'Uasin Gishu',
+    'Vihiga',
+    'Wajir',
+    'West Pokot',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +137,16 @@ class _SchoolRegisterState extends State<schoolregister> {
                       return null;
                     },
                     obscureText: showPassword,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          showPassword = !showPassword;
+                        });
+                      },
+                      icon: Icon(
+                        showPassword ? Icons.visibility : Icons.visibility_off,
+                      ),
+                    ),
                   ),
                   buildElevatedButton(),
                   buildRichTextForLogin(),
@@ -156,13 +165,14 @@ class _SchoolRegisterState extends State<schoolregister> {
     TextInputType keyboardType,
     String? Function(String?)? validator, {
     bool obscureText = false,
+    Widget? suffixIcon,
   }) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
       child: TextFormField(
         controller: controller,
         keyboardType: keyboardType,
-        decoration: buildInputDecoration(labelText),
+        decoration: buildInputDecoration(labelText, suffixIcon: suffixIcon),
         validator: validator,
         obscureText: obscureText,
       ),
@@ -197,11 +207,12 @@ class _SchoolRegisterState extends State<schoolregister> {
     );
   }
 
-  InputDecoration buildInputDecoration(String labelText) {
+  InputDecoration buildInputDecoration(String labelText, {Widget? suffixIcon}) {
     return InputDecoration(
       contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
       labelText: labelText,
+      suffixIcon: suffixIcon,
     );
   }
 
