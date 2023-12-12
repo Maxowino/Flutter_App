@@ -122,6 +122,13 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const Text('Register'),
         onPressed: () async {
           if (formKey.currentState!.validate()) {
+             showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
             try {
               UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
                 email: email.text,

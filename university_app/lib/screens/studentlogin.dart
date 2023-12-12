@@ -93,6 +93,13 @@ class _studentloginState extends State<studentlogin> {
                     child: const Text('Login'),
                     onPressed: () async {
                       if (slogindetails.currentState!.validate()) {
+                         showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (context) => Center(
+                              child: CircularProgressIndicator(),
+                             ),
+                         );
                         try {
                           await _auth.signInWithEmailAndPassword(
                             email: user.text.trim(),

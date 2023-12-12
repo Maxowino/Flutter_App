@@ -106,6 +106,13 @@ class _LoginState extends State<Login> {
               child:const Text('Login'),
               onPressed: ()async{
                 if (logindetails.currentState!.validate()) {
+                   showDialog(
+                    context: context,
+                     barrierDismissible: false,
+                    builder: (context) => Center(
+                    child: CircularProgressIndicator(),
+              ),
+            );
                    try {
                           await _auth.signInWithEmailAndPassword(
                             email: user.text.trim(),
