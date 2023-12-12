@@ -49,7 +49,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text("Application"),
+        title: const Text("Application",style:TextStyle(color:Colors.white)),
         backgroundColor: Colors.black,
         centerTitle: true,
       ),

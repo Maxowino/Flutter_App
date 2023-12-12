@@ -11,19 +11,20 @@ class Resources extends StatefulWidget {
 
 class _ResourcesState extends State<Resources> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController namecontroller=TextEditingController();
   final TextEditingController exerciseBooksController = TextEditingController();
   final TextEditingController form1TextbooksController = TextEditingController();
   final TextEditingController form2TextbooksController = TextEditingController();
   final TextEditingController form3TextbooksController = TextEditingController();
   final TextEditingController form4TextbooksController = TextEditingController();
-  final TextEditingController labEquipmentController = TextEditingController();
+ 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text("Resources"),
+        title: const Text("Resources",style:TextStyle(color:Colors.white)),
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
@@ -104,12 +105,12 @@ class _ResourcesState extends State<Resources> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text('Please Note that the number for TextBooks is the average for each subject', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                buildTextFormField(namecontroller, 'Name', TextInputType.text),
                 buildTextFormField(exerciseBooksController, 'Enter Exercise Books', TextInputType.number),
                 buildTextFormField(form1TextbooksController, 'Enter Form 1 Textbooks', TextInputType.number),
                 buildTextFormField(form2TextbooksController, 'Enter Form 2 Textbooks', TextInputType.number),
                 buildTextFormField(form3TextbooksController, 'Enter Form 3 Textbooks', TextInputType.number),
                 buildTextFormField(form4TextbooksController, 'Enter Form 4 Textbooks', TextInputType.number),
-                buildTextFormField(labEquipmentController, 'Enter Lab Equipment', TextInputType.number),
                 buildElevatedButton(),
               ],
             ),
@@ -154,7 +155,7 @@ class _ResourcesState extends State<Resources> {
         child: const Text('Submit'),
         onPressed: () {
           if (_formKey.currentState!.validate()) {
-            // Call a function to store the data in Firestore
+            // Call  function to store the data in Firestore
             storeDataInFirestore();
           }
         },
@@ -169,13 +170,13 @@ class _ResourcesState extends State<Resources> {
       
       if (user != null) {
         // Use the user's UID as the document ID
-        await FirebaseFirestore.instance.collection('schoolrequests').doc(user.uid).set({
+        await FirebaseFirestore.instance.collection('Resource-request').doc(user.uid).set({
+          'name': namecontroller.text,
           'exerciseBooks': int.parse(exerciseBooksController.text),
           'form1Textbooks': int.parse(form1TextbooksController.text),
           'form2Textbooks': int.parse(form2TextbooksController.text),
           'form3Textbooks': int.parse(form3TextbooksController.text),
           'form4Textbooks': int.parse(form4TextbooksController.text),
-          'labEquipment': int.parse(labEquipmentController.text),
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -183,8 +184,21 @@ class _ResourcesState extends State<Resources> {
             content: const Text('Data submitted successfully!'),
             backgroundColor: Colors.black,
             duration: const Duration(seconds: 3),
+            dismissDirection: DismissDirection.up,
+                  behavior: SnackBarBehavior.floating,
+                  margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height - 120,
+                    left: 40,
+                    right: 40,
+                  ),
           ),
         );
+        namecontroller.clear();
+         exerciseBooksController.clear();
+        form1TextbooksController.clear();
+        form2TextbooksController.clear();
+        form3TextbooksController.clear();
+        form4TextbooksController.clear();
       } else {
         print('User not logged in');
       }

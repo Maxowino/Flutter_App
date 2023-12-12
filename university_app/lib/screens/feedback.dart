@@ -13,7 +13,7 @@ class _FeedbackScreenState extends State<feedback> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Feedback and Suggestions"),
+        title: const Text("Feedback and Suggestions",style:TextStyle(color:Colors.white)),
         backgroundColor: Colors.black,
         centerTitle: true,
       ),

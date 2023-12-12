@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/adminscreens.dart';
 import 'package:university_app/screens/admindata.dart';
+import 'package:university_app/screens/adminrequest.dart';
 
 class adminhomepage extends StatefulWidget{
   @override
@@ -12,6 +13,7 @@ class _adminhomepageState extends State<adminhomepage> {
   List<Widget> pageslist=[
     adminscreen(),
     admindata(),
+    DataRequest(),
   ];
   @override
   Widget build(BuildContext context){
@@ -42,11 +44,21 @@ class _adminhomepageState extends State<adminhomepage> {
        
       ),
       BottomNavigationBarItem(
-         icon: Icon(Icons.contact_page_sharp),
+         icon: Icon(Icons.school_outlined),
          label:'Schools',
        backgroundColor: Colors.black,
        
       ),
+      BottomNavigationBarItem(
+         icon: Icon(Icons.contact_page_sharp),
+         label:'AllRequests',
+       backgroundColor: Colors.black,
+      ),
+      BottomNavigationBarItem(
+         icon: Icon(Icons.web_outlined),
+         label:'Student Application',
+       backgroundColor: Colors.black, 
+      )
 
     ],
       

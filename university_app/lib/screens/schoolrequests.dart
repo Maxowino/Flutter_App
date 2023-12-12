@@ -17,7 +17,7 @@ class _SchoolRequestsState extends State<schoolrequests> {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text("My Requests"),
+        title: const Text("My Requests",style:TextStyle(color:Colors.white)),
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
@@ -93,6 +93,7 @@ class _SchoolRequestsState extends State<schoolrequests> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+               SizedBox(height: 20),
               Text('My Requests', style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
               UserDataTable(),
             ],
@@ -111,13 +112,13 @@ class UserDataTable extends StatelessWidget {
     if (user == null) {
       // If user is not logged in, show an error message or redirect to login screen
       return Center(
-        child: Text("User not logged in."),
+        child: Text("Please Update your data."),
       );
     }
 
     return StreamBuilder(
       stream: FirebaseFirestore.instance
-          .collection('schoolrequests')
+          .collection('Resource-request')
           .doc(user.uid)
           .snapshots(),
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -138,33 +139,35 @@ class UserDataTable extends StatelessWidget {
 
         return DataTable(
           columns: [
+            DataColumn(label: Text('Name')),
             DataColumn(label: Text('Item')),
             DataColumn(label: Text('Quantity')),
           ],
           rows: [
             DataRow(cells: [
+              DataCell(Text(data['name'] ?? '')),
               DataCell(Text('Exercise Books')),
               DataCell(Text('${data['exerciseBooks']}')),
             ]),
             DataRow(cells: [
+              DataCell(Text(data['name'] ?? '')),
               DataCell(Text('Form 1 Textbooks')),
               DataCell(Text('${data['form1Textbooks']}')),
             ]),
             DataRow(cells: [
+               DataCell(Text(data['name'] ?? '')),
               DataCell(Text('Form 2 Textbooks')),
               DataCell(Text('${data['form2Textbooks']}')),
             ]),
             DataRow(cells: [
+              DataCell(Text(data['name'] ?? '')),
               DataCell(Text('Form 3 Textbooks')),
               DataCell(Text('${data['form3Textbooks']}')),
             ]),
             DataRow(cells: [
+              DataCell(Text(data['name'] ?? '')),
               DataCell(Text('Form 4 Textbooks')),
               DataCell(Text('${data['form4Textbooks']}')),
-            ]),
-            DataRow(cells: [
-              DataCell(Text('Lab Equipment')),
-              DataCell(Text('${data['labEquipment']}')),
             ]),
           ],
         );
