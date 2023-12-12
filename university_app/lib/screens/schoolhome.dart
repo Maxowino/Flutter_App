@@ -23,11 +23,13 @@ class schoolHome extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text("Homepage"),
+        title: const Text("Homepage",style:TextStyle(color:Colors.white)),
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
       drawer: Drawer(
+       backgroundColor: Colors.white,
+       shadowColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[

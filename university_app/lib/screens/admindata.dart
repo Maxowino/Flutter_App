@@ -13,7 +13,8 @@ class _admindataState extends State<admindata> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Schools Data'),
+        backgroundColor: Colors.black,
+        title: Text('Schools Data',style: TextStyle(color: Colors.white),),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _firestore.collection('Schools').snapshots(),
@@ -32,30 +33,35 @@ class _admindataState extends State<admindata> {
 
           // Display data from Firestore in a DataTable
           final schools = snapshot.data?.docs ?? [];
-          return DataTable(
-            columns: [
-              DataColumn(label: Text('Email')),
-              DataColumn(label: Text('Location')),
-              DataColumn(label: Text('Phone')),
-            ],
-            rows: schools.map<DataRow>((school) {
-              final schoolData = school.data() as Map<String, dynamic>;
-              final schoolEmail = schoolData['email'] as String;
-              final schoolLocation = schoolData['location'] as String;
-              final schoolPhone = schoolData['phone'] as String;
-
-              return DataRow(
-                cells: [
-                  DataCell(Text(schoolEmail)),
-                  DataCell(Text(schoolLocation)),
-                  DataCell(Text(schoolPhone)),
+          return Container(
+            color: Colors.grey, // Set the background color to grey
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
+                columns: [
+                  DataColumn(label: Text('Email')),
+                  DataColumn(label: Text('Location')),
+                  DataColumn(label: Text('Phone')),
                 ],
-              );
-            }).toList(),
+                rows: schools.map<DataRow>((school) {
+                  final schoolData = school.data() as Map<String, dynamic>;
+                  final schoolEmail = schoolData['email'] as String;
+                  final schoolLocation = schoolData['location'] as String;
+                  final schoolPhone = schoolData['phone'] as String;
+
+                  return DataRow(
+                    cells: [
+                      DataCell(Text(schoolEmail)),
+                      DataCell(Text(schoolLocation)),
+                      DataCell(Text(schoolPhone)),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ),
           );
         },
       ),
     );
   }
 }
-

@@ -230,14 +230,37 @@ class _SchoolRegisterState extends State<schoolregister> {
         child: const Text('Register'),
         onPressed: () async {
           if (formKey.currentState!.validate()) {
-            
-             showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) => Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+
+            showDialog(
+  context: context,
+  barrierDismissible: false,
+  builder: (context) => Dialog(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    child: Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircularProgressIndicator(),
+          SizedBox(height: 16),
+          Text(
+            "Loading...",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    ),
+  ),
+);
+
             try {
               UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
                 email: email.text,

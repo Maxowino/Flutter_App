@@ -39,6 +39,7 @@ class DataRequest extends StatelessWidget {
 
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
+            
             child: DataTable(
               columns: [
                 DataColumn(label: Text('Name')),

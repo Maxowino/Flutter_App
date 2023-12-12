@@ -2,9 +2,10 @@ import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/schoollogin.dart';
 import 'package:university_app/screens/studentlogin.dart';
+import 'package:university_app/screens/adminlogin.dart';
 
 class selectUser extends StatefulWidget{
-
+ 
   @override
   State<selectUser> createState()=>_selectUserState();
 
@@ -14,6 +15,27 @@ class _selectUserState extends  State<selectUser> with SingleTickerProviderState
   @override
   Widget build(BuildContext context){
     return  Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56.0), // Custom height for the AppBar
+        child: AppBar(
+          title: const Text('Select User',style:TextStyle(fontWeight: FontWeight.bold)),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+        actions: [
+            PopupMenuButton(
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem(
+                    child: const Text('Admin'),
+                    onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => adminlogin()));
+                    },
+                  ),
+                ];
+              },
+            ),
+        ],
+      )),
       backgroundColor: Colors.grey,
       body: AnimatedBackground(
 
@@ -37,10 +59,6 @@ class _selectUserState extends  State<selectUser> with SingleTickerProviderState
           child: Center(
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(50.0),
-                  child: Text('Select User',style: TextStyle(fontSize: 34,color: Colors.black,fontWeight: FontWeight.bold),),
-                ),
                 SizedBox(
         
                   height:200,

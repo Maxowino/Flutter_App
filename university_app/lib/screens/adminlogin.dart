@@ -124,8 +124,8 @@ class _adminloginState extends State<adminlogin> {
                         } else {
                           // Show an error message for invalid credentials
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar (content:const  Text('Login Successful!'),
-                            backgroundColor: Colors.black,
+                            SnackBar (content:const  Text('Failed! Enter the Correct Credentials'),
+                            backgroundColor: Colors.redAccent,
                             duration:const Duration(seconds:2),
                             dismissDirection: DismissDirection.up,
                             behavior: SnackBarBehavior.floating,

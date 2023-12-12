@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:university_app/screens/adminscreens.dart';
 import 'package:university_app/screens/admindata.dart';
 import 'package:university_app/screens/adminrequest.dart';
+import 'package:university_app/screens/adminstudent.dart';
+
 
 class adminhomepage extends StatefulWidget{
   @override
@@ -14,6 +16,7 @@ class _adminhomepageState extends State<adminhomepage> {
     adminscreen(),
     admindata(),
     DataRequest(),
+    studentdata(),
   ];
   @override
   Widget build(BuildContext context){

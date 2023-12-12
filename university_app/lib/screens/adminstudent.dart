@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DataRequest extends StatelessWidget {
+class studentdata extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Student Application'),
+        backgroundColor: Colors.black,
+        title: Text('Student Application',style:TextStyle(color: Colors.white)),
+        centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('Form-Application').snapshots(),
@@ -37,17 +39,20 @@ class DataRequest extends StatelessWidget {
             );
           }).toList();
 
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: DataTable(
-              columns: [
-                DataColumn(label: Text('Name')),
-                DataColumn(label: Text('Location')),
-                DataColumn(label: Text('Current School')),
-                DataColumn(label: Text('Applying Course')),
-                DataColumn(label: Text('Applying University')),
-              ],
-              rows: dataRows,
+          return Container(
+            color: Colors.grey, // Set the background color to grey
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
+                columns: [
+                  DataColumn(label: Text('Name')),
+                  DataColumn(label: Text('Location')),
+                  DataColumn(label: Text('Current School')),
+                  DataColumn(label: Text('Applying Course')),
+                  DataColumn(label: Text('Applying University')),
+                ],
+                rows: dataRows,
+              ),
             ),
           );
         },
@@ -55,4 +60,3 @@ class DataRequest extends StatelessWidget {
     );
   }
 }
-

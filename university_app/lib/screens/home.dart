@@ -28,6 +28,7 @@ class Homee extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: Drawer(
+        surfaceTintColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[

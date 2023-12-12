@@ -106,18 +106,42 @@ class _LoginState extends State<Login> {
               child:const Text('Login'),
               onPressed: ()async{
                 if (logindetails.currentState!.validate()) {
-                   showDialog(
-                    context: context,
-                     barrierDismissible: false,
-                    builder: (context) => Center(
-                    child: CircularProgressIndicator(),
-              ),
-            );
+                showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => Dialog(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          child: Container(
+                            padding: EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CircularProgressIndicator(),
+                                SizedBox(height: 16),
+                                Text(
+                                  "Loading...",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+
                    try {
                           await _auth.signInWithEmailAndPassword(
                             email: user.text.trim(),
                             password: pass.text,
                           );
+                   Navigator.pop(context);
                    
                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolHomepage(),),);
                 //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
@@ -136,6 +160,7 @@ class _LoginState extends State<Login> {
                   ));}
                  catch (e) {
                           print('Error signing in: $e');
+                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: const Text('Invalid credentials. Please try again.'),
