@@ -3,7 +3,6 @@ import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/profile.dart';
 import 'package:university_app/screens/applyform.dart';
 import 'package:university_app/screens/home.dart';
-import 'package:university_app/screens/course.dart';
 
 
 class Homepage extends StatefulWidget{
@@ -19,10 +18,8 @@ class _HomepageState extends State<Homepage> {
   
   List<Widget> pagelist=[
     Homee(),
-    Course(),
     DataEntryForm(),
     profile(),
-
   ];
   List<user> users=[];
   @override
@@ -55,14 +52,6 @@ class _HomepageState extends State<Homepage> {
          icon: Icon(Icons.home),
          label:'Home',
        backgroundColor: Colors.black,
-       
-      ),
-   
-        BottomNavigationBarItem(
-         icon: Icon(Icons.book),
-         label:'Course',
-       backgroundColor: Colors.black,
-      
        
       ),  
       BottomNavigationBarItem(

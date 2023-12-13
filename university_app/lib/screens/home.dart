@@ -109,7 +109,25 @@ class Homee extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('My Home', style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
+              Text('About Us', style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height:500,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 20,),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                        child: Text('Welcome to Our App. Created in 2022 , we aim to assist aspiring Students who want to study in their dream university to secure opportunities for them.In partnership with UniPass we assist you in your steps to secure sponsorships within'
+                        ' and outside the country and guide them throughout their Education journey. Together with the Government of Kenya we have succeeded in convicing some of the biggest Universities around the world to enroll our students in the sponsorship program. '
+                         'We hope to propel our students to reach their maximum potential by giving them this golden opportunity.',style:TextStyle(fontSize: 19,fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                  ),
+                
+              )
             ],
           ),
         ),

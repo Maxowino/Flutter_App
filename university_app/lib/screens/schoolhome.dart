@@ -122,23 +122,8 @@ class schoolHome extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                         child: Text('Welcome to Our App. Created in 2023 , we aim to improving the education sector in Public Schools by providing a platform for High Schools to be able to get the Learning materials that they require to better the Learning process for their students.'
                         ' We specialize in connecting High School with the Ministry of Education for provision of the Approved Standard of Exercise Books and Text Books''Our Goal is to provide the Students with the neccessary materials that they need to succeed in their education'
-                         'journey. We hope that you will continue with us in this process to help our Students get the quality Education that they Deserve. For more Information feel free to Contact Us.',style:TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
+                         'journey. We hope that you will continue with us in this process to help our Students get the quality Education that they Deserve. For more Information feel free to Contact Us.',style:TextStyle(fontSize: 19,fontWeight: FontWeight.bold)),
                       ),
-                      SizedBox(height:30),
-                      Text('Contact Us',style:TextStyle(fontWeight: FontWeight.bold,fontSize:20 )),
-                      SizedBox(height: 10),
-                      SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.facebook),
-                        SizedBox(width: 10),
-                        Icon(Icons.twitter),
-                        SizedBox(width: 10),
-                        Icon(Icons.instagram),
-                        
-                      ],
-                    ),
                     ],
                   ),
                 
