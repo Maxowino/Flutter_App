@@ -27,7 +27,7 @@ class _selectUserState extends  State<selectUser> with SingleTickerProviderState
               itemBuilder: (BuildContext context) {
                 return [
                   PopupMenuItem(
-                    child: const Text('Admin'),
+                    child: const Text('Admin',style:TextStyle(color:Colors.white)),
                     onTap: () {
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => adminlogin()));
                     },
