@@ -5,6 +5,7 @@ class studentdata extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('Student Application',style:TextStyle(color: Colors.white)),
@@ -39,21 +40,23 @@ class studentdata extends StatelessWidget {
             );
           }).toList();
 
-          return Container(
+          return Center(
+            child: Container(
             color: Colors.grey, // Set the background color to grey
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
                 columns: [
-                  DataColumn(label: Text('Name')),
-                  DataColumn(label: Text('Location')),
-                  DataColumn(label: Text('Current School')),
-                  DataColumn(label: Text('Applying Course')),
-                  DataColumn(label: Text('Applying University')),
+                  DataColumn(label: Text('Name',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Location',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Current School',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Applying Course',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Applying University',style: TextStyle(fontWeight: FontWeight.bold),)),
                 ],
                 rows: dataRows,
               ),
             ),
+          )
           );
         },
       ),

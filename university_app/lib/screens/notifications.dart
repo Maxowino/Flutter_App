@@ -7,7 +7,7 @@ class notifications extends StatelessWidget{
     return  Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-          title:const Text("Notifications"),backgroundColor: Colors.black, 
+          title:const Text("Notifications",style: TextStyle(color:Colors.white),),backgroundColor: Colors.black, 
           centerTitle: true,
 
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:university_app/screens/selectuser.dart';
 
 class adminscreen extends StatefulWidget {
   @override
@@ -12,8 +13,26 @@ class _AdminScreenState extends State<adminscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Users'),
+        backgroundColor: Colors.black,
+        title: Text('Students',style:TextStyle(color:Colors.white)),
+        centerTitle: true,
+        actions: [
+            PopupMenuButton(
+              color: Colors.black,
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem(
+                    child: const Text('Logout'),
+                    onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => selectUser()));
+                    },
+                  ),
+                ];
+              },
+            ),
+        ],
       ),
      body: StreamBuilder<QuerySnapshot>(
         stream: _firestore.collection('Students').snapshots(),
@@ -30,15 +49,16 @@ class _AdminScreenState extends State<adminscreen> {
             );
           }
         final users =snapshot.data?.docs ?? [];
-        return Container(
+        return Center(
+          child:Container(
           color: Colors.grey, // Set the background color to grey
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: DataTable(
               columns: [
-                DataColumn(label: Text('Email')),
-                DataColumn(label: Text('Phone')),
-                DataColumn(label: Text('Username')),
+                DataColumn(label: Text('Email',style: TextStyle(fontWeight: FontWeight.bold),)),
+                DataColumn(label: Text('Phone',style: TextStyle(fontWeight: FontWeight.bold),)),
+                DataColumn(label: Text('Username',style: TextStyle(fontWeight: FontWeight.bold),)),
               ],
               rows: users.map<DataRow>((user) {
                 final userData = user.data() as Map<String, dynamic>;
@@ -56,6 +76,7 @@ class _AdminScreenState extends State<adminscreen> {
               }).toList(),
             ),
           ),
+        )
         );
       },
     ));

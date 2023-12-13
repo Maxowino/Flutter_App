@@ -5,8 +5,11 @@ class DataRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Resource Requests'),
+        backgroundColor: Colors.black,
+        title: Text('Resource Requests',style:TextStyle(color: Colors.white)),
+        centerTitle:true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('Resource-request').snapshots(),
@@ -37,18 +40,20 @@ class DataRequest extends StatelessWidget {
             );
           }).toList();
 
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            
-            child: DataTable(
-              columns: [
-                DataColumn(label: Text('Name')),
-                DataColumn(label: Text('Form 1 Textbooks')),
-                DataColumn(label: Text('Form 2 Textbooks')),
-                DataColumn(label: Text('Form 3 Textbooks')),
-                DataColumn(label: Text('Form 4 Textbooks')),
-              ],
-              rows: dataRows,
+          return Center(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              
+              child: DataTable(
+                columns: [
+                  DataColumn(label: Text('Name',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Form 1 Textbooks',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Form 2 Textbooks',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Form 3 Textbooks',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  DataColumn(label: Text('Form 4 Textbooks',style: TextStyle(fontWeight: FontWeight.bold),)),
+                ],
+                rows: dataRows,
+              ),
             ),
           );
         },

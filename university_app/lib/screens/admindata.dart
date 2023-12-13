@@ -12,9 +12,11 @@ class _admindataState extends State<admindata> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('Schools Data',style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _firestore.collection('Schools').snapshots(),
@@ -33,30 +35,32 @@ class _admindataState extends State<admindata> {
 
           // Display data from Firestore in a DataTable
           final schools = snapshot.data?.docs ?? [];
-          return Container(
-            color: Colors.grey, // Set the background color to grey
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                columns: [
-                  DataColumn(label: Text('Email')),
-                  DataColumn(label: Text('Location')),
-                  DataColumn(label: Text('Phone')),
-                ],
-                rows: schools.map<DataRow>((school) {
-                  final schoolData = school.data() as Map<String, dynamic>;
-                  final schoolEmail = schoolData['email'] as String;
-                  final schoolLocation = schoolData['location'] as String;
-                  final schoolPhone = schoolData['phone'] as String;
-
-                  return DataRow(
-                    cells: [
-                      DataCell(Text(schoolEmail)),
-                      DataCell(Text(schoolLocation)),
-                      DataCell(Text(schoolPhone)),
-                    ],
-                  );
-                }).toList(),
+          return Center(
+            child: Container(
+              color: Colors.grey, // Set the background color to grey
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  columns: [
+                    DataColumn(label: Text('Email',style: TextStyle(fontWeight: FontWeight.bold),)),
+                    DataColumn(label: Text('Location',style: TextStyle(fontWeight: FontWeight.bold),)),
+                    DataColumn(label: Text('Phone',style: TextStyle(fontWeight: FontWeight.bold),)),
+                  ],
+                  rows: schools.map<DataRow>((school) {
+                    final schoolData = school.data() as Map<String, dynamic>;
+                    final schoolEmail = schoolData['email'] as String;
+                    final schoolLocation = schoolData['location'] as String;
+                    final schoolPhone = schoolData['phone'] as String;
+            
+                    return DataRow(
+                      cells: [
+                        DataCell(Text(schoolEmail)),
+                        DataCell(Text(schoolLocation)),
+                        DataCell(Text(schoolPhone)),
+                      ],
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           );
