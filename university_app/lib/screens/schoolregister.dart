@@ -238,12 +238,12 @@ class _SchoolRegisterState extends State<schoolregister> {
     backgroundColor: Colors.transparent,
     elevation: 0,
     child: Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Column(
+      child: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           CircularProgressIndicator(),
@@ -274,6 +274,7 @@ class _SchoolRegisterState extends State<schoolregister> {
                 'password': pass.text,
                 'location': selectedLocation,
               });
+               Navigator.pop(context);
 
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
 
@@ -312,7 +313,7 @@ class _SchoolRegisterState extends State<schoolregister> {
             ),
             TextSpan(
               text: "Login",
-              style: TextStyle(color: Colors.white, fontSize: 14),
+              style: const TextStyle(color: Colors.white, fontSize: 14),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));

@@ -10,20 +10,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   
-  // await addDataToFirestore('email@gmail.com', '2345654321', 'password', 'username');
+  
   runApp(MyApp());
 }
 
-// Future<void> addDataToFirestore(email, phone, pass, user) async {
-//   CollectionReference registerReference = FirebaseFirestore.instance.collection('Students');
 
-//   await registerReference.add({
-//     'email': email,
-//     'phone': phone,
-//     'password': pass,
-//     'username': user,
-//   });
-// }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});

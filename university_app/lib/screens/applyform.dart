@@ -42,6 +42,20 @@ class _DataEntryFormState extends State<DataEntryForm> {
       });
       _formKey.currentState!.reset();
     }
+       ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Data submitted successfully!'),
+            backgroundColor: Colors.black,
+            duration: const Duration(seconds: 3),
+            dismissDirection: DismissDirection.up,
+                  behavior: SnackBarBehavior.floating,
+                  margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height - 120,
+                    left: 40,
+                    right: 40,
+                  ),
+          ),
+        );
   }
 
   @override
