@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:university_app/models/user.dart';
 import 'package:university_app/screens/profile.dart';
@@ -31,8 +33,8 @@ class _HomepageState extends State<Homepage> {
 
     backgroundColor: Colors.grey,
     body:IndexedStack(
-      children: pagelist,
       index: _currentindex,
+      children: pagelist,
     ),
      bottomNavigationBar:BottomNavigationBar(
       backgroundColor: Colors.black,

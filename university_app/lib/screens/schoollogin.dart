@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/schoolhomepage.dart';
@@ -113,12 +115,12 @@ class _LoginState extends State<Login> {
                           backgroundColor: Colors.transparent,
                           elevation: 0,
                           child: Container(
-                            padding: EdgeInsets.all(16),
+                            padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 CircularProgressIndicator(),
@@ -143,7 +145,7 @@ class _LoginState extends State<Login> {
                           );
                    Navigator.pop(context);
                    
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>schoolHomepage(),),);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const schoolHomepage(),),);
                 //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const  Text('Login Successful!'),
@@ -158,7 +160,7 @@ class _LoginState extends State<Login> {
                    ),
                    
                   ));}
-                 catch (e) {
+                  catch (e) {
                           print('Error signing in: $e');
                            Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -181,7 +183,7 @@ class _LoginState extends State<Login> {
               }
               )
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -193,7 +195,7 @@ class _LoginState extends State<Login> {
                    
                   }
                   ),
-                  Text('Remember Me', style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),)
+                  const Text('Remember Me', style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black),)
               ],
             ),
 

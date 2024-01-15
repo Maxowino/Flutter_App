@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
 
+// ignore: camel_case_types
 class feedback extends StatefulWidget {
+  const feedback({super.key});
+
   @override
   State<feedback> createState() => _FeedbackScreenState();
 }
@@ -71,6 +74,7 @@ class _FeedbackScreenState extends State<feedback> {
         'timestamp': FieldValue.serverTimestamp(), // Include a timestamp
       });
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text('Thank you for your Feedback!'),
         backgroundColor: Colors.black,
@@ -78,12 +82,14 @@ class _FeedbackScreenState extends State<feedback> {
         dismissDirection: DismissDirection.up,
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.only(
+          // ignore: use_build_context_synchronously
           bottom: MediaQuery.of(context).size.height - 170,
           left: 40,
           right: 40,
         ),
       ));
     } catch (e) {
+      // ignore: avoid_print
       print('Error storing feedback in Firestore: $e');
     }
   }

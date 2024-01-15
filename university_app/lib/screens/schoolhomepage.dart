@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/resources.dart';
 import 'package:university_app/screens/schoolhome.dart';
@@ -26,8 +28,8 @@ class _schoolHomepageState extends State<schoolHomepage> {
    return  Scaffold(
     backgroundColor: Colors.grey,
     body:IndexedStack(
-      children: pagelist,
       index: _currentindex,
+      children: pagelist,
     ),
      bottomNavigationBar:BottomNavigationBar(
       backgroundColor: Colors.black,

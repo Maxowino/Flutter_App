@@ -1,6 +1,10 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class schoolsetting extends StatefulWidget{
+  const schoolsetting({super.key});
+
   @override
   State<schoolsetting> createState() => _schoolsettingState();
 }

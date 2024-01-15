@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,6 +7,8 @@ import 'package:university_app/screens/feedback.dart';
 import 'package:university_app/screens/selectuser.dart';
 
 class schoolrequests extends StatefulWidget {
+  const schoolrequests({super.key});
+
   @override
   State<schoolrequests> createState() => _SchoolRequestsState();
 }
@@ -74,7 +78,7 @@ class _SchoolRequestsState extends State<schoolrequests> {
               leading: const Icon(Icons.message),
               title: const Text('Feedback'),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => feedback()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const feedback()));
               },
             ),
             ListTile(
@@ -87,7 +91,7 @@ class _SchoolRequestsState extends State<schoolrequests> {
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -105,13 +109,15 @@ class _SchoolRequestsState extends State<schoolrequests> {
 }
 
 class UserDataTable extends StatelessWidget {
+  const UserDataTable({super.key});
+
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user == null) {
       // If user is not logged in, show an error message or redirect to login screen
-      return Center(
+      return const Center(
         child: Text("Please Update your data."),
       );
     }
@@ -124,12 +130,12 @@ class UserDataTable extends StatelessWidget {
       builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // If data is still being fetched, show a loading indicator
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
 
         if (!snapshot.hasData || !snapshot.data!.exists) {
           // If no data is available, show a message or handle the error
-          return Center(
+          return const Center(
             child: Text("No data available."),
           );
         }
@@ -138,7 +144,7 @@ class UserDataTable extends StatelessWidget {
         Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
 
         return DataTable(
-          columns: [
+          columns: const [
             DataColumn(label: Text('Name')),
             DataColumn(label: Text('Item')),
             DataColumn(label: Text('Quantity')),
@@ -146,27 +152,27 @@ class UserDataTable extends StatelessWidget {
           rows: [
             DataRow(cells: [
               DataCell(Text(data['name'] ?? '')),
-              DataCell(Text('Exercise Books')),
+              const DataCell(Text('Exercise Books')),
               DataCell(Text('${data['exerciseBooks']}')),
             ]),
             DataRow(cells: [
               DataCell(Text(data['name'] ?? '')),
-              DataCell(Text('Form 1 Textbooks')),
+              const DataCell(Text('Form 1 Textbooks')),
               DataCell(Text('${data['form1Textbooks']}')),
             ]),
             DataRow(cells: [
                DataCell(Text(data['name'] ?? '')),
-              DataCell(Text('Form 2 Textbooks')),
+              const DataCell(Text('Form 2 Textbooks')),
               DataCell(Text('${data['form2Textbooks']}')),
             ]),
             DataRow(cells: [
               DataCell(Text(data['name'] ?? '')),
-              DataCell(Text('Form 3 Textbooks')),
+              const DataCell(Text('Form 3 Textbooks')),
               DataCell(Text('${data['form3Textbooks']}')),
             ]),
             DataRow(cells: [
               DataCell(Text(data['name'] ?? '')),
-              DataCell(Text('Form 4 Textbooks')),
+              const DataCell(Text('Form 4 Textbooks')),
               DataCell(Text('${data['form4Textbooks']}')),
             ]),
           ],

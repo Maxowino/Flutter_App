@@ -1,6 +1,10 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class settings extends StatefulWidget{
+  const settings({super.key});
+
  
   @override
   State<settings> createState() => _settingsState();
@@ -28,11 +32,11 @@ return Scaffold(
          
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height:10),
+              const SizedBox(height:10),
               SwitchListTile(
                 activeColor: Colors.black,
                 value: check1,
-                title: Text('NewsLetter',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
+                title: const Text('NewsLetter',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                 onChanged: (value){
                    setState(() {
                       check1=!check1;
@@ -43,7 +47,7 @@ return Scaffold(
               SwitchListTile(
                 activeColor: Colors.black,
                 value: check2,
-                title: Text('Updates',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
+                title: const Text('Updates',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                 onChanged: (value){
                    setState(() {
                       check2=!check2;
@@ -54,7 +58,7 @@ return Scaffold(
               SwitchListTile(
                 activeColor: Colors.black,
                 value:check,
-                title: Text('Events',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
+                title: const Text('Events',style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                 onChanged: (value){
                   setState(() {
                       check=!check;

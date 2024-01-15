@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataEntryForm extends StatefulWidget {
+  const DataEntryForm({super.key});
+
   @override
   _DataEntryFormState createState() => _DataEntryFormState();
 }
@@ -75,7 +77,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your name';
@@ -83,10 +85,10 @@ class _DataEntryFormState extends State<DataEntryForm> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _locationController,
-                decoration: InputDecoration(labelText: 'Location'),
+                decoration: const InputDecoration(labelText: 'Location'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your location';
@@ -94,10 +96,10 @@ class _DataEntryFormState extends State<DataEntryForm> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _schoolController,
-                decoration: InputDecoration(labelText: 'School'),
+                decoration: const InputDecoration(labelText: 'School'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your school';
@@ -105,10 +107,10 @@ class _DataEntryFormState extends State<DataEntryForm> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownButtonFormField<String>(
                 value: _selectedUniversity,
-                decoration: InputDecoration(labelText: 'University Choice'),
+                decoration: const InputDecoration(labelText: 'University Choice'),
                 items: universities.map((String university) {
                   return DropdownMenuItem<String>(
                     value: university,
@@ -127,10 +129,10 @@ class _DataEntryFormState extends State<DataEntryForm> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownButtonFormField<String>(
                 value: _selectedCourse,
-                decoration: InputDecoration(labelText: 'Course Choice'),
+                decoration: const InputDecoration(labelText: 'Course Choice'),
                 items: courses.map((String course) {
                   return DropdownMenuItem<String>(
                     value: course,
@@ -149,7 +151,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
               style: ElevatedButton.styleFrom(
               minimumSize:const Size(180,50),
@@ -159,7 +161,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
               side: BorderSide.none
             ),
                 onPressed: _submitForm,
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),

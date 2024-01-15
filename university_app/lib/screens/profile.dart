@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -64,7 +66,7 @@ Future<void> fetchUserData() async {
       ),
       backgroundColor: Colors.grey,
       body: Container(
-        padding: EdgeInsets.only(left: 16, top: 16, right: 16),
+        padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -139,17 +141,17 @@ Future<void> fetchUserData() async {
                       showPassword = !showPassword;
                     });
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.remove_red_eye,
                     color: Colors.grey,
                   ),
                 )
               : null,
-          contentPadding: EdgeInsets.only(bottom: 3),
+          contentPadding: const EdgeInsets.only(bottom: 3),
           labelText: labelText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: placeholder,
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.black,

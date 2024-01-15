@@ -1,6 +1,10 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class notifications extends StatelessWidget{
+  const notifications({super.key});
+
   @override
   Widget build(BuildContext context){
     
@@ -12,7 +16,7 @@ class notifications extends StatelessWidget{
 
       ),
 
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height:10),

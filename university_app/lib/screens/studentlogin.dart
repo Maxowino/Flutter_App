@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print, camel_case_types
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/register.dart';
@@ -5,6 +7,8 @@ import 'package:university_app/screens/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class studentlogin extends StatefulWidget {
+  const studentlogin({super.key});
+
   @override
   State<studentlogin> createState() => _studentloginState();
 }
@@ -100,12 +104,12 @@ class _studentloginState extends State<studentlogin> {
     backgroundColor: Colors.transparent,
     elevation: 0,
     child: Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Column(
+      child: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           CircularProgressIndicator(),
@@ -172,7 +176,7 @@ class _studentloginState extends State<studentlogin> {
                     },
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -184,7 +188,7 @@ class _studentloginState extends State<studentlogin> {
                         });
                       },
                     ),
-                    Text('Remember Me', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black)),
+                    const Text('Remember Me', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black)),
                   ],
                 ),
                 Padding(

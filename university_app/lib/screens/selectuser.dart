@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/schoollogin.dart';
@@ -5,6 +7,8 @@ import 'package:university_app/screens/studentlogin.dart';
 import 'package:university_app/screens/adminlogin.dart';
 
 class selectUser extends StatefulWidget{
+  const selectUser({super.key});
+
  
   @override
   State<selectUser> createState()=>_selectUserState();
@@ -16,7 +20,7 @@ class _selectUserState extends  State<selectUser> with SingleTickerProviderState
   Widget build(BuildContext context){
     return  Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56.0), // Custom height for the AppBar
+        preferredSize: const Size.fromHeight(56.0), // Custom height for the AppBar
         child: AppBar(
           title: const Text('Select User',style:TextStyle(fontWeight: FontWeight.bold)),
           centerTitle: true,
@@ -29,7 +33,7 @@ class _selectUserState extends  State<selectUser> with SingleTickerProviderState
                   PopupMenuItem(
                     child: const Text('Admin',style:TextStyle(color:Colors.white)),
                     onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => adminlogin()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const adminlogin()));
                     },
                   ),
                 ];
