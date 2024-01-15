@@ -8,14 +8,14 @@ class studentdata extends StatelessWidget {
       backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Student Application',style:TextStyle(color: Colors.white)),
+        title: const Text('Student Applications',style:TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('Form-Application').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {
@@ -23,7 +23,7 @@ class studentdata extends StatelessWidget {
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No data available.'));
+            return const Center(child: Text('No data available.'));
           }
 
           List<DataRow> dataRows = snapshot.data!.docs.map((doc) {
@@ -46,7 +46,7 @@ class studentdata extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                columns: [
+                columns: const [
                   DataColumn(label: Text('Name',style: TextStyle(fontWeight: FontWeight.bold),)),
                   DataColumn(label: Text('Location',style: TextStyle(fontWeight: FontWeight.bold),)),
                   DataColumn(label: Text('Current School',style: TextStyle(fontWeight: FontWeight.bold),)),

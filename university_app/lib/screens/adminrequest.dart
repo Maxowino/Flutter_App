@@ -8,14 +8,14 @@ class DataRequest extends StatelessWidget {
       backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Resource Requests',style:TextStyle(color: Colors.white)),
+        title: const Text('Resource Requests',style:TextStyle(color: Colors.white)),
         centerTitle:true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('Resource-request').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {
@@ -23,7 +23,7 @@ class DataRequest extends StatelessWidget {
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No data available.'));
+            return const Center(child: Text('No data available.'));
           }
 
           List<DataRow> dataRows = snapshot.data!.docs.map((doc) {
@@ -45,7 +45,7 @@ class DataRequest extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               
               child: DataTable(
-                columns: [
+                columns: const [
                   DataColumn(label: Text('Name',style: TextStyle(fontWeight: FontWeight.bold),)),
                   DataColumn(label: Text('Form 1 Textbooks',style: TextStyle(fontWeight: FontWeight.bold),)),
                   DataColumn(label: Text('Form 2 Textbooks',style: TextStyle(fontWeight: FontWeight.bold),)),

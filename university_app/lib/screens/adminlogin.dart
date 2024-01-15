@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:university_app/screens/adminhomepage.dart';
 
+// ignore: camel_case_types
 class adminlogin extends StatefulWidget {
+  const adminlogin({super.key});
+
   @override
   State<adminlogin> createState() => _adminloginState();
 }
 
+// ignore: camel_case_types
 class _adminloginState extends State<adminlogin> {
   bool showpassword = true;
   bool checkedbox = false;

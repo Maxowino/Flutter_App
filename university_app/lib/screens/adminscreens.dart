@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:university_app/screens/selectuser.dart';
 
+// ignore: camel_case_types
 class adminscreen extends StatefulWidget {
+  const adminscreen({super.key});
+
   @override
   State<adminscreen> createState() => _AdminScreenState();
 }
@@ -16,7 +19,7 @@ class _AdminScreenState extends State<adminscreen> {
       backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Students',style:TextStyle(color:Colors.white)),
+        title: const Text('Students',style:TextStyle(color:Colors.white)),
         centerTitle: true,
         actions: [
             PopupMenuButton(
@@ -38,7 +41,7 @@ class _AdminScreenState extends State<adminscreen> {
         stream: _firestore.collection('Students').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -55,7 +58,7 @@ class _AdminScreenState extends State<adminscreen> {
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: DataTable(
-              columns: [
+              columns: const [
                 DataColumn(label: Text('Email',style: TextStyle(fontWeight: FontWeight.bold),)),
                 DataColumn(label: Text('Phone',style: TextStyle(fontWeight: FontWeight.bold),)),
                 DataColumn(label: Text('Username',style: TextStyle(fontWeight: FontWeight.bold),)),
