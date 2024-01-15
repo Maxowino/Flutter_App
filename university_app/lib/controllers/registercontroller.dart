@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:university_app/repository/authenticationrepo.dart';
 
 class signupcontroller extends GetxController{
   static signupcontroller get instance=>Get.find();

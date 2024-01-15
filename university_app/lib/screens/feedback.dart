@@ -53,8 +53,7 @@ class _FeedbackScreenState extends State<feedback> {
                     shape: const StadiumBorder(),
                     side: BorderSide.none),
                 child: const Text('Send'),
-                onPressed: () {
-                  // Call the function to store feedback in Firestore
+                onPressed: () {     
                   storeFeedbackInFirestore();
                 },
               ),
