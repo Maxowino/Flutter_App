@@ -146,7 +146,6 @@ class _LoginState extends State<Login> {
                    Navigator.pop(context);
                    
                   Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) =>const schoolHomepage(),),);
-                //  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                    ScaffoldMessenger.of(context).showSnackBar( SnackBar
                    (content:const  Text('Login Successful!'),
                    backgroundColor: Colors.black,

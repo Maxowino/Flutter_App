@@ -98,33 +98,33 @@ class _studentloginState extends State<studentlogin> {
                     onPressed: () async {
                       if (slogindetails.currentState!.validate()) {
                         showDialog(
-  context: context,
-  barrierDismissible: false,
-  builder: (context) => Dialog(
-    backgroundColor: Colors.transparent,
-    elevation: 0,
-    child: Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: const Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CircularProgressIndicator(),
-          SizedBox(height: 16),
-          Text(
-            "Loading...",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
-    ),
-  ),
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => Dialog(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          child: Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CircularProgressIndicator(),
+                                SizedBox(height: 16),
+                                Text(
+                                  "Loading...",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
 );
 
                         try {

@@ -65,61 +65,63 @@ Future<void> fetchUserData() async {
         centerTitle: true,
       ),
       backgroundColor: Colors.grey,
-      body: Container(
-        padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
-          child: ListView(
-            children: [
-              const Text(
-                'My Profile',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Center(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 130,
-                      height: 130,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 4,
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                        ),
-                        boxShadow: const [
-                          BoxShadow(
-                            spreadRadius: 2,
-                            blurRadius: 10,
-                            color: Colors.black,
-                            offset: Offset(0, 10),
-                          )
-                        ],
-                        shape: BoxShape.circle,
-                        // Use a placeholder image or default image URL
-                        // You can replace the placeholder with your actual image URL
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F437116%2Fperson-circle&psig=AOvVaw3bo9pkQjYAeAcUR8aG_RXN&ust=1698848352282000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDWqbi9oIIDFQAAAAAdAAAAABAJ"),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
+          child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: ListView(
+              children: [
+                const Text(
+                  'My Profile',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Center(
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 130,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          boxShadow: const [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              color: Colors.black,
+                              offset: Offset(0, 10),
+                            )
+                          ],
+                          shape: BoxShape.circle,
+                          // Use a placeholder image or default image URL
+                          // You can replace the placeholder with your actual image URL
+                          image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F437116%2Fperson-circle&psig=AOvVaw3bo9pkQjYAeAcUR8aG_RXN&ust=1698848352282000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDWqbi9oIIDFQAAAAAdAAAAABAJ"),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              buildTextField("Email", email ?? "", false),
-              buildTextField("Phone Number", phone?? "", false),
-              buildTextField("Password", password ?? "", true),
-              buildTextField("Username", username ?? "", true),
-            ],
+                const SizedBox(
+                  height: 35,
+                ),
+                buildTextField("Email", email ?? "", false),
+                buildTextField("Phone Number", phone?? "", false),
+                buildTextField("Password", password ?? "", true),
+                buildTextField("Username", username ?? "", true),
+              ],
+            ),
           ),
         ),
       ),
