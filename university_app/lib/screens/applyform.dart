@@ -16,7 +16,16 @@ class _DataEntryFormState extends State<DataEntryForm> {
   String? _selectedUniversity;
   String? _selectedCourse;
 
-  final List<String> universities = ['University of Nairobi', 'University of Oxford', 'Massachusetts Institute of Technology', 'Strathmore University', 'Colorado State University', 'Laurier University', 'University of Cape Town', 'Mansoura University'];
+  final List<String> universities = [
+    'University of Nairobi',
+    'University of Oxford',
+    'Massachusetts Institute of Technology',
+    'Strathmore University',
+    'Colorado State University',
+    'Laurier University',
+    'University of Cape Town',
+    'Mansoura University'
+  ];
 
   final List<String> courses = [
     'Accounting',
@@ -35,29 +44,54 @@ class _DataEntryFormState extends State<DataEntryForm> {
 
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      await FirebaseFirestore.instance.collection('Form-Application').add({
-        'name': _nameController.text,
-        'location': _locationController.text,
-        'school': _schoolController.text,
-        'university': _selectedUniversity,
-        'course': _selectedCourse,
-      });
-      _formKey.currentState!.reset();
-    }
-       ScaffoldMessenger.of(context).showSnackBar(
+      final QuerySnapshot existingEntry = await FirebaseFirestore.instance
+          .collection('Form-Application')
+          .where('name', isEqualTo: _nameController.text)
+          .where('university', isEqualTo: _selectedUniversity)
+          .where('course', isEqualTo: _selectedCourse)
+          .limit(1)
+          .get();
+
+      if (existingEntry.docs.isEmpty) {
+        await FirebaseFirestore.instance.collection('Form-Application').add({
+          'name': _nameController.text,
+          'location': _locationController.text,
+          'school': _schoolController.text,
+          'university': _selectedUniversity,
+          'course': _selectedCourse,
+        });
+        _formKey.currentState!.reset();
+        ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: const Text('Data submitted successfully!'),
             backgroundColor: Colors.black,
             duration: const Duration(seconds: 3),
             dismissDirection: DismissDirection.up,
-                  behavior: SnackBarBehavior.floating,
-                  margin: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).size.height - 120,
-                    left: 40,
-                    right: 40,
-                  ),
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 120,
+              left: 40,
+              right: 40,
+            ),
           ),
         );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('You have already submitted an application.'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
+            dismissDirection: DismissDirection.up,
+            behavior: SnackBarBehavior.floating,
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height - 120,
+              left: 40,
+              right: 40,
+            ),
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -65,7 +99,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text("Application",style:TextStyle(color:Colors.white)),
+        title: const Text("Application", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
@@ -153,13 +187,13 @@ class _DataEntryFormState extends State<DataEntryForm> {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-              style: ElevatedButton.styleFrom(
-              minimumSize:const Size(180,50),
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-              shape: const StadiumBorder(),
-              side: BorderSide.none
-            ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(180, 50),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  shape: const StadiumBorder(),
+                  side: BorderSide.none,
+                ),
                 onPressed: _submitForm,
                 child: const Text('Submit'),
               ),

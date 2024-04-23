@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ),
 );
-
+        
             try {
               UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
                 email: email.text,
@@ -165,7 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 'password': pass.text,
                 'username': user.text,
               });
+                Navigator.pop(context);
 
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const studentlogin()));
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: const Text('Registration Successful!'),
@@ -180,9 +182,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               );
-            } catch (e) {
-              print('Error registering user or adding data to Firestore: $e');
+            } catch (e) { Navigator.pop(context); // Ensure loading dialog is closed on error
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Failed to Register. Error: $e'),
+                 backgroundColor: Colors.black,
+                  duration: const Duration(seconds: 3),
+                  dismissDirection: DismissDirection.up,
+                  behavior: SnackBarBehavior.floating,
+                  margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height - 120,
+                    left: 40,
+                    right: 40,
+                  ),));
             }
+            
           }
         },
       ),

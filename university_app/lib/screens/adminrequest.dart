@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataRequest extends StatelessWidget {
+  
+  const DataRequest({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Resource Requests',style:TextStyle(color: Colors.white)),
+        title: const Text('School Requests',style:TextStyle(color: Colors.white)),
         centerTitle:true,
       ),
       body: StreamBuilder<QuerySnapshot>(
